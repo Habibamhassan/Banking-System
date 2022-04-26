@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package newpackage;
+package com.mycompany.first;
 
 /**
  *
- * @author Habiba
+ * @author lenovo
  */
 public class Admin extends User {
     public Admin(String N,int Age,int Id){
@@ -16,12 +15,13 @@ public class Admin extends User {
         this.Id=Id;
   
     }
-    public void RegisterClient(String N,int Age,int Id,int B,String A,int P,char Acc){
+    public void RegisterClient(String N,int Age,int Id,float B,String A,int P,char Acc){
         Client C = new Client(N,Age,Id,B,A,P,Acc);
     }
     public void DeleteClient(Client c){
         c=null;
     }
+     
     public void EditName(Client c,String N){
         c.setName(N);
     }
@@ -40,10 +40,10 @@ public class Admin extends User {
     public void EditAccNo(Client c,char A){
         c.setAccNo(A);
     }
-    public int ShowTransHistory(Client c){
+    public float ShowTransHistory(Client c){
         return c.PrevTrans;
     }
-    public int CheckBalance(Client c){
+    public float CheckBalance(Client c){
         return c.Balance;
     }
     public void TransferMoney(Client c,int Money){
