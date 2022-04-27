@@ -25,7 +25,6 @@ public abstract class User {
     public int getId() {
         return Id;
     }
-    
 
     public String getName() {
         return Name;

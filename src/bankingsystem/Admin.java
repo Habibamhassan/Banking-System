@@ -15,8 +15,8 @@ public class Admin extends User {
         this.Id=Id;
   
     }
-    public void RegisterClient(String N,int Age,int Id,float B,String A,int P,char Acc){
-        Client C = new Client(N,Age,Id,B,A,P,Acc);
+    public void RegisterClient(String N,int Age,int Id,String A,int P,char Acc,Account c){
+        Client C = new Client(N,Age,Id,A,P,Acc,c);
     }
     public void DeleteClient(Client c){
         c=null;
@@ -42,23 +42,5 @@ public class Admin extends User {
     }
     public float ShowTransHistory(Client c){
         return c.PrevTrans;
-    }
-    public float CheckBalance(Client c){
-        return c.Balance;
-    }
-    public void TransferMoney(Client c,int Money){
-        c.TransferMoney(Money);
-    }
-    public void DepositeMoney(Client c,int Money){
-        if(Money!=0){
-            c.setBalance(c.Balance+Money);
-            c.setPrevTrans(Money);
-        }
-    }
-    public void WithdrawMoney(Client c,int Money){
-        if(Money!=0){
-            c.setBalance(c.Balance-Money);
-            c.setPrevTrans(Money);
-        }
     }
 }

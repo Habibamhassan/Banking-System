@@ -12,9 +12,6 @@ package bankingsystem;
 public abstract class Transactions {
     protected Account mainClient;
     
-    public Transactions(Account mainClient){
-        this.mainClient = mainClient;
-    }
     public void setMainClient(Account main) {
         this.mainClient = main;
     }

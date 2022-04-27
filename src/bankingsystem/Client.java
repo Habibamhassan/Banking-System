@@ -14,23 +14,30 @@ package bankingsystem;
  * @author Habiba
  */
 public class Client extends User {
-    protected float Balance;
+    //protected float Balance;
     protected String Address;
     protected int PhNo;
     protected char AccNo;
+    protected Account clientAccount;
     protected int TransferredMoney;
     protected float PrevTrans;
-    public Client(String N,int Age,int Id,float B,String A,int P,char Acc){
+    public Client(String N,int Age,int Id,String A,int P,char Acc, Account C){
+        // Database Code to get account info
         Name=N;
         this.Age=Age;
         this.Id=Id;
-        Balance = B;
         Address = A;
         PhNo =P;
         AccNo=Acc;
+        clientAccount = C;
     }
-    public void setBalance(float Balance) {
-        this.Balance = Balance;
+    
+    public Account getClientAccount() {
+        return clientAccount;
+    }
+
+    public void setClientAccount(Account clientAccount) {
+        this.clientAccount = clientAccount;
     }
 
     public void setAddress(String Address) {
@@ -60,49 +67,18 @@ public class Client extends User {
     public char getAccNo() {
         return AccNo;
     }
-
+    
     public void get_loan(float amount)
     {
-        if(amount <= Balance )
+        if(amount <= clientAccount.balance )
         {
                     System.out.println("loan is accepted");
-                    Balance= Balance + amount;
+                    clientAccount.balance = clientAccount.balance + amount;
         }
                     
         else
                     System.out.println("loan is rejected");
 
 
-    }
-    public int getTransferredMoney() {
-        return TransferredMoney;
-    }
-    
-   
-    public void DepositeMoney(float Money){
-        if(Money!=0){
-            Balance+=Money;
-            PrevTrans=Money;
-        }
-    }
-    public void WithdrawMoney(int Money){
-        if(Money!=0){
-            Balance-=Money;
-            PrevTrans=Money;
-        } 
-    }
-    public float CheckBalance(){
-        return Balance;
-    }
-    public void TransferMoney(int Money){
-        TransferredMoney =Money;
-    }
-    public float getPrevTrans() {
-        if(PrevTrans>0)
-            return PrevTrans;
-        else if(PrevTrans<0)
-            return 0;
-        return 0;
-    }
-    
+    }        
 }

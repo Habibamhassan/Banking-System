@@ -9,12 +9,12 @@ package bankingsystem;
  * @author lenovo
  */
 public class Account {
-    private char acc_id;
-    private double balance;
-    private String type;
-    private  Client c;
+    protected char acc_id;
+    protected double balance;
+    protected String type;
+    protected  Client c;
 
-    public Account(char acc_id, float balance, String type, Client c) {
+    public Account(char acc_id, double balance, String type, Client c) {
         this.acc_id = acc_id;
         this.balance = balance;
         this.type = type;

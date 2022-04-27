@@ -11,6 +11,10 @@ package bankingsystem;
  */
 public class Deposit extends Transactions {
     
+    public Deposit(Account mainClient){
+        this.mainClient = mainClient;
+    }
+    
    
     public void depositAmount(double amount){
         double currentBalance = this.mainClient.getBalance();

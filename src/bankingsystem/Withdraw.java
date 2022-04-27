@@ -10,7 +10,12 @@ package bankingsystem;
  * @author engah
  */
 public class Withdraw extends Transactions {
-
+    
+    public Withdraw(Account mainClient){
+        this.mainClient = mainClient;
+    }
+         
+    
     public void withdrawAmount(double amount){
         double currentBalance = this.mainClient.getBalance();
         this.mainClient.setBalance(currentBalance - amount);

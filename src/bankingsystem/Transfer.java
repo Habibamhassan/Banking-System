@@ -12,14 +12,20 @@ package bankingsystem;
 public class Transfer extends Transactions {
     private Account helperClient;
     
-    public void setHelperClient(Account helperClient) {
-        this.helperClient = helperClient;
+    public void setHelperClient(Account HelperClient) {
+        this.helperClient = HelperClient;
     }
     public Account geHelperClient() {
         return helperClient;
     }
     public Transfer(Account HelperClient){
-        this.helperClient = helperClient;
+        this.helperClient = HelperClient;
     }
+    public void transferAmount(double amount){
+        Withdraw w = new Withdraw(mainClient);
+        Deposit d = new Deposit(helperClient);
+        w.withdrawAmount(amount);
+        d.depositAmount(amount);
+    } 
     
 }

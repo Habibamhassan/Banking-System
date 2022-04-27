@@ -10,6 +10,10 @@ package bankingsystem;
  * @author engah
  */
 public class CheckBalance extends Transactions{
+        
+    public CheckBalance(Account mainClient){
+        this.mainClient = mainClient;
+    }
 
     public double getInfo(){
         return mainClient.getBalance();
