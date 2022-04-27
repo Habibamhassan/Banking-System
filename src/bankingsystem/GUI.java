@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
-/**
- *
- * @author DELL
- */
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -36,7 +27,8 @@ public class GUI implements ActionListener {
     //profile tab 
     JLabel l_name, l_dob, l_nationality, l_gender, l_address, l_account_no, l_account_type, l_mobile_no;
     JTextField tf_name, tf_dob, tf_nationality, tf_gender, tf_address, tf_account_no, tf_account_type, tf_mobile_no;
-
+    JButton profile_edit_btn, profile_save_btn ;
+    
     //Deposit tab
     JLabel l_user_deposit, l_name_deposit, l_credit_account_deposit, l_available_balance_deposit, l_amount_deposit;
     JTextField tf_user_deposit, tf_name_deposit, tf_credit_account_deposit, tf_available_balance_deposit, tf_amount_deposit;
@@ -55,8 +47,8 @@ public class GUI implements ActionListener {
 //---------------------------------(LOGIN FRAME)-----------------------------//        
         login = new JFrame();
         login.setTitle("LOGIN PAGE");
-        login.setSize(600, 400);
-        login.setLocation(600, 250);
+        login.setSize(900, 400);
+        login.setLocation(300, 250);
 
 //----------------------------------( Panel )----------------------------------|
         JPanel P0 = new JPanel(new GridLayout(4,1)) ;
@@ -97,22 +89,119 @@ public class GUI implements ActionListener {
 //-------------------------------(ACCOUNT(SECOND)FRAME)--------------------------------//
         account = new JFrame();
         account.setTitle("MY ACCOUNT");
-        account.setSize(600, 400);
-        account.setLocation(600, 250);
+        account.setSize(900, 400);
+        account.setLocation(300, 250);
         account.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JTabbedPane tabs = new JTabbedPane();
-        tabs.setBounds(40,20,300,300);
+//        tabs.setBounds(40,20,300,300);
         
-        JPanel Pprofile = new JPanel(new GridLayout(5,3));
+        JPanel Pprofile = new JPanel(new GridLayout(2,1));
+        JPanel Pprofile1 = new JPanel(new GridLayout(4,4));
+        JPanel Pprofile2 = new JPanel();
+        JPanel Pp1 = new JPanel();
+        JPanel Pp2 = new JPanel();
+        JPanel Pp3 = new JPanel();
+        JPanel Pp4 = new JPanel();
+        JPanel Pp5 = new JPanel();
+        JPanel Pp6 = new JPanel();
+        JPanel Pp7 = new JPanel();
+        JPanel Pp8 = new JPanel();
+        JPanel Pp9 = new JPanel();
+        JPanel Pp10 = new JPanel();
+        JPanel Pp11 = new JPanel();
+        JPanel Pp12 = new JPanel();
+        JPanel Pp13 = new JPanel();
+        JPanel Pp14 = new JPanel();
+        JPanel Pp15 = new JPanel();
+        JPanel Pp16 = new JPanel();
         
-        JPanel Pdeposit = new JPanel();
-        Pdeposit.setLayout(new GridBagLayout());
-        GridBagConstraints cdeposit = new GridBagConstraints();
+        Pprofile.add(Pprofile1);
+        Pprofile.add(Pprofile2);
+        Pprofile1.add(Pp1);
+        Pprofile1.add(Pp2);
+        Pprofile1.add(Pp3);
+        Pprofile1.add(Pp4);
+        Pprofile1.add(Pp5);
+        Pprofile1.add(Pp6);
+        Pprofile1.add(Pp7);
+        Pprofile1.add(Pp8);
+        Pprofile1.add(Pp9);
+        Pprofile1.add(Pp10);
+        Pprofile1.add(Pp11);
+        Pprofile1.add(Pp12);
+        Pprofile1.add(Pp13);
+        Pprofile1.add(Pp14);
+        Pprofile1.add(Pp15);
+        Pprofile1.add(Pp16);
         
-        JPanel Ptransfer = new JPanel();
-        Ptransfer.setLayout(new GridBagLayout());
-        GridBagConstraints ctransfer = new GridBagConstraints();
+        
+        
+        
+        
+        JPanel Pdeposit = new JPanel(new GridLayout(2,1));
+        JPanel Pdeposit1 = new JPanel(new GridLayout(5,2));
+        JPanel Pdeposit2 = new JPanel();
+        JPanel Pd1 = new JPanel();
+        JPanel Pd2 = new JPanel();
+        JPanel Pd3 = new JPanel();
+        JPanel Pd4 = new JPanel();
+        JPanel Pd5 = new JPanel();
+        JPanel Pd6 = new JPanel();
+        JPanel Pd7 = new JPanel();
+        JPanel Pd8 = new JPanel();
+        JPanel Pd9 = new JPanel();
+        JPanel Pd10 = new JPanel();
+
+        Pdeposit.add(Pdeposit1);
+        Pdeposit.add(Pdeposit2);
+        Pdeposit1.add(Pd1);
+        Pdeposit1.add(Pd2);
+        Pdeposit1.add(Pd3);
+        Pdeposit1.add(Pd4);
+        Pdeposit1.add(Pd5);
+        Pdeposit1.add(Pd6);
+        Pdeposit1.add(Pd7);
+        Pdeposit1.add(Pd8);
+        Pdeposit1.add(Pd9);
+        Pdeposit1.add(Pd10);
+        
+
+        
+        JPanel Ptransfer = new JPanel(new GridLayout(2,1));
+        JPanel Ptransfer1 = new JPanel(new GridLayout(6,2));
+        JPanel Ptransfer2 = new JPanel();
+        JPanel Pt1 = new JPanel();
+        JPanel Pt2 = new JPanel();
+        JPanel Pt3 = new JPanel();
+        JPanel Pt4 = new JPanel();
+        JPanel Pt5 = new JPanel();
+        JPanel Pt6 = new JPanel();
+        JPanel Pt7 = new JPanel();
+        JPanel Pt8 = new JPanel();
+        JPanel Pt9 = new JPanel();
+        JPanel Pt10 = new JPanel();
+        JPanel Pt11 = new JPanel();
+        JPanel Pt12 = new JPanel();
+
+        Ptransfer.add(Ptransfer1);
+        Ptransfer.add(Ptransfer2);
+        Ptransfer1.add(Pt1);
+        Ptransfer1.add(Pt2);
+        Ptransfer1.add(Pt3);
+        Ptransfer1.add(Pt4);
+        Ptransfer1.add(Pt5);
+        Ptransfer1.add(Pt6);
+        Ptransfer1.add(Pt7);
+        Ptransfer1.add(Pt8);
+        Ptransfer1.add(Pt9);
+        Ptransfer1.add(Pt10);
+        Ptransfer1.add(Pt11);
+        Ptransfer1.add(Pt12);
+        
+        
+        
+        
         
         JPanel Ptransactions = new JPanel(new GridLayout(5,3));
         JPanel Pwithdraw = new JPanel(new GridLayout(5,3));
@@ -154,23 +243,39 @@ public class GUI implements ActionListener {
         tf_account_type.setText("");
         tf_mobile_no = new JTextField(20);
         tf_mobile_no.setText("");
+        
+            tf_name.setEditable(false);
+            tf_dob.setEditable(false); 
+            tf_nationality.setEditable(false);
+            tf_gender.setEditable(false);
+            tf_address.setEditable(false);
+            tf_account_no.setEditable(false);
+            tf_account_type.setEditable(false);
+            tf_mobile_no.setEditable(false);
+        
+        profile_edit_btn = new JButton("Edit");
+        profile_edit_btn.addActionListener(this);
+        profile_save_btn = new JButton("Save");
+        profile_save_btn.addActionListener(this);
 
-        Pprofile.add(l_name);
-        Pprofile.add(tf_name);
-        Pprofile.add(l_dob);
-        Pprofile.add(tf_dob);
-        Pprofile.add(l_nationality);
-        Pprofile.add(tf_nationality);
-        Pprofile.add(l_gender);
-        Pprofile.add(tf_gender);
-        Pprofile.add(l_address);
-        Pprofile.add(tf_address);
-        Pprofile.add(l_account_no);
-        Pprofile.add(tf_account_no);
-        Pprofile.add(l_account_type);
-        Pprofile.add(tf_account_type);
-        Pprofile.add(l_mobile_no);
-        Pprofile.add(tf_mobile_no);
+        Pp1.add(l_name);
+        Pp2.add(tf_name);
+        Pp3.add(l_dob);
+        Pp4.add(tf_dob);
+        Pp5.add(l_nationality);
+        Pp6.add(tf_nationality);
+        Pp7.add(l_gender);
+        Pp8.add(tf_gender);
+        Pp9.add(l_address);
+        Pp10.add(tf_address);
+        Pp11.add(l_account_no);
+        Pp12.add(tf_account_no);
+        Pp13.add(l_account_type);
+        Pp14.add(tf_account_type);
+        Pp15.add(l_mobile_no);
+        Pp16.add(tf_mobile_no);
+        Pprofile2.add(profile_edit_btn);
+        Pprofile2.add(profile_save_btn);
 
 //----------------------------------Deposit tap------------------------------------//
         l_user_deposit = new JLabel("User");
@@ -195,49 +300,19 @@ public class GUI implements ActionListener {
         deposit_btn = new JButton("Deposit");
         deposit_btn.addActionListener(this);
         
-        cdeposit.gridx = 0;
-        cdeposit.gridy = 0;
-        Pdeposit.add(l_user_deposit, cdeposit);
         
-        cdeposit.gridx = 1;
-        cdeposit.gridy = 0;
-        Pdeposit.add(tf_user_deposit, cdeposit);
-        
-        cdeposit.gridx = 0;
-        cdeposit.gridy = 1;
-        Pdeposit.add(l_name_deposit, cdeposit);
-        
-        cdeposit.gridx = 1;
-        cdeposit.gridy = 1;
-        Pdeposit.add(tf_name_deposit, cdeposit);
-        
-        cdeposit.gridx = 0;
-        cdeposit.gridy = 2;
-        Pdeposit.add(l_credit_account_deposit,cdeposit);
-        
-        cdeposit.gridx = 1;
-        cdeposit.gridy = 2;
-        Pdeposit.add(tf_credit_account_deposit,cdeposit);
-        
-        cdeposit.gridx = 0;
-        cdeposit.gridy = 3;
-        Pdeposit.add(l_available_balance_deposit,cdeposit);
-        
-        cdeposit.gridx = 1;
-        cdeposit.gridy = 3;
-        Pdeposit.add(tf_available_balance_deposit,cdeposit);
-        
-        cdeposit.gridx = 0;
-        cdeposit.gridy = 4;
-        Pdeposit.add(l_amount_deposit,cdeposit);
-        
-        cdeposit.gridx = 1;
-        cdeposit.gridy = 4;
-        Pdeposit.add(tf_amount_deposit,cdeposit);
-        
-        cdeposit.gridx = 6;
-        cdeposit.gridy = 6;
-        Pdeposit.add(deposit_btn,cdeposit);
+        Pd1.add(l_user_deposit);
+        Pd2.add(tf_user_deposit);
+        Pd3.add(l_name_deposit);
+        Pd4.add(tf_name_deposit);
+        Pd5.add(l_credit_account_deposit);
+        Pd6.add(tf_credit_account_deposit);
+        Pd7.add(l_available_balance_deposit);
+        Pd8.add(tf_available_balance_deposit);
+        Pd9.add(l_amount_deposit);
+        Pd10.add(tf_amount_deposit);
+        Pdeposit2.add(deposit_btn);
+  
  
 //------------------------------Transfer Tab------------------------------------//
 
@@ -266,57 +341,19 @@ public class GUI implements ActionListener {
         transfer_btn = new JButton("Transfer");
         transfer_btn.addActionListener(this);
         
-        ctransfer.gridx = 0;
-        ctransfer.gridy = 0;
-        Ptransfer.add(l_user_transfer, ctransfer);
-        
-        ctransfer.gridx = 1;
-        ctransfer.gridy = 0;
-        Ptransfer.add(tf_user_transfer, ctransfer);
-        
-        ctransfer.gridx = 0;
-        ctransfer.gridy = 1;
-        Ptransfer.add(l_name_transfer, ctransfer);
-        
-        ctransfer.gridx = 1;
-        ctransfer.gridy = 1;
-        Ptransfer.add(tf_name_transfer, ctransfer);
-        
-        ctransfer.gridx = 0;
-        ctransfer.gridy = 2;
-        Ptransfer.add(l_debit_account_transfer,ctransfer);
-        
-        ctransfer.gridx = 1;
-        ctransfer.gridy = 2;
-        Ptransfer.add(tf_debit_account_transfer,ctransfer);
-        
-        ctransfer.gridx = 0;
-        ctransfer.gridy = 3;
-        Ptransfer.add(l_available_balance_transfer,ctransfer);
-        
-        ctransfer.gridx = 1;
-        ctransfer.gridy = 3;
-        Ptransfer.add(tf_available_balance_transfer,ctransfer);
-        
-        ctransfer.gridx = 0;
-        ctransfer.gridy = 4;
-        Ptransfer.add(l_amount_transfer,ctransfer);
-        
-        ctransfer.gridx = 1;
-        ctransfer.gridy = 4;
-        Ptransfer.add(tf_amount_transfer,ctransfer);
-
-        ctransfer.gridx = 0;
-        ctransfer.gridy = 5;
-        Ptransfer.add(l_credit_account_transfer,ctransfer);
-        
-        ctransfer.gridx = 1;
-        ctransfer.gridy = 5;
-        Ptransfer.add(tf_credit_account_transfer,ctransfer);
-      
-        ctransfer.gridx = 6;
-        ctransfer.gridy = 6;
-        Ptransfer.add(transfer_btn,ctransfer);
+        Pt1.add(l_user_transfer);
+        Pt2.add(tf_user_transfer);
+        Pt3.add(l_name_transfer);
+        Pt4.add(tf_name_transfer);
+        Pt5.add(l_debit_account_transfer);
+        Pt6.add(tf_debit_account_transfer);
+        Pt7.add(l_available_balance_transfer);
+        Pt8.add(tf_available_balance_transfer);
+        Pt9.add(l_amount_transfer);
+        Pt10.add(tf_amount_transfer);
+        Pt11.add(l_credit_account_transfer);
+        Pt12.add(tf_credit_account_transfer);
+        Ptransfer2.add(transfer_btn);
  
     }
 
@@ -344,6 +381,29 @@ public class GUI implements ActionListener {
                 l_loginError.setText(" Please Enter the Password");
             }
 
+        }
+        if (e.getSource() == profile_edit_btn)
+        {
+            tf_name.setEditable(true);
+            tf_dob.setEditable(true); 
+            tf_nationality.setEditable(true);
+            tf_gender.setEditable(true);
+            tf_address.setEditable(true);
+            tf_account_no.setEditable(true);
+            tf_account_type.setEditable(true);
+            tf_mobile_no.setEditable(true);
+        }
+        if (e.getSource() == profile_save_btn)
+        {
+            //................................
+            tf_name.setEditable(false);
+            tf_dob.setEditable(false); 
+            tf_nationality.setEditable(false);
+            tf_gender.setEditable(false);
+            tf_address.setEditable(false);
+            tf_account_no.setEditable(false);
+            tf_account_type.setEditable(false);
+            tf_mobile_no.setEditable(false);
         }
         if (e.getSource() == deposit_btn)
         {
