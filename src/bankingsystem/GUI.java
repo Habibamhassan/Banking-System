@@ -1,5 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gui;
 
+/**
+ *
+ * @author DELL
+ */
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -12,7 +21,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class GUI implements ActionListener {
@@ -40,7 +51,19 @@ public class GUI implements ActionListener {
     JTextField tf_user_transfer, tf_name_transfer, tf_debit_account_transfer, tf_available_balance_transfer, 
             tf_amount_transfer, tf_credit_account_transfer;
     JButton transfer_btn;
+    
     //Withdraw tab
+    JLabel l_user_withdraw, l_name_withdraw, l_debit_account_withdraw, l_available_balance_withdraw, l_amount_withdraw;
+    JTextField tf_user_withdraw, tf_name_withdraw, tf_debit_account_withdraw, tf_available_balance_withdraw, tf_amount_withdraw;
+    JButton withdraw_btn;
+    
+    //Transactions tab
+    JTable transactions;
+    
+    //view balance tab
+    JLabel l_user_view, l_name_view, l_account_no_view, l_micr_no_view, l_roi_view, l_available_balance_view, l_mod_balance_view;
+    JTextField tf_user_view, tf_name_view, tf_account_no_view, tf_micr_no_view, tf_roi_view, tf_available_balance_view,
+            tf_mod_balance_view;
     
     public GUI() {
         
@@ -96,6 +119,7 @@ public class GUI implements ActionListener {
         JTabbedPane tabs = new JTabbedPane();
 //        tabs.setBounds(40,20,300,300);
         
+//----------------------------------profile panels----------------------------------//
         JPanel Pprofile = new JPanel(new GridLayout(2,1));
         JPanel Pprofile1 = new JPanel(new GridLayout(4,4));
         JPanel Pprofile2 = new JPanel();
@@ -134,11 +158,10 @@ public class GUI implements ActionListener {
         Pprofile1.add(Pp14);
         Pprofile1.add(Pp15);
         Pprofile1.add(Pp16);
-        
-        
-        
-        
-        
+       
+ 
+//----------------------------------Deposit panels----------------------------------//    
+
         JPanel Pdeposit = new JPanel(new GridLayout(2,1));
         JPanel Pdeposit1 = new JPanel(new GridLayout(5,2));
         JPanel Pdeposit2 = new JPanel();
@@ -167,7 +190,8 @@ public class GUI implements ActionListener {
         Pdeposit1.add(Pd10);
         
 
-        
+//----------------------------------Transfer panels----------------------------------//
+
         JPanel Ptransfer = new JPanel(new GridLayout(2,1));
         JPanel Ptransfer1 = new JPanel(new GridLayout(6,2));
         JPanel Ptransfer2 = new JPanel();
@@ -198,14 +222,78 @@ public class GUI implements ActionListener {
         Ptransfer1.add(Pt10);
         Ptransfer1.add(Pt11);
         Ptransfer1.add(Pt12);
+             
+//----------------------------------Withdraw panels----------------------------------//    
+
+        JPanel Pwithdraw = new JPanel(new GridLayout(2,1));
+        JPanel Pwithdraw1 = new JPanel(new GridLayout(5,2));
+        JPanel Pwithdraw2 = new JPanel();
+        JPanel Pw1 = new JPanel();
+        JPanel Pw2 = new JPanel();
+        JPanel Pw3 = new JPanel();
+        JPanel Pw4 = new JPanel();
+        JPanel Pw5 = new JPanel();
+        JPanel Pw6 = new JPanel();
+        JPanel Pw7 = new JPanel();
+        JPanel Pw8 = new JPanel();
+        JPanel Pw9 = new JPanel();
+        JPanel Pw10 = new JPanel();
+
+        Pwithdraw.add(Pwithdraw1);
+        Pwithdraw.add(Pwithdraw2);
+        Pwithdraw1.add(Pw1);
+        Pwithdraw1.add(Pw2);
+        Pwithdraw1.add(Pw3);
+        Pwithdraw1.add(Pw4);
+        Pwithdraw1.add(Pw5);
+        Pwithdraw1.add(Pw6);
+        Pwithdraw1.add(Pw7);
+        Pwithdraw1.add(Pw8);
+        Pwithdraw1.add(Pw9);
+        Pwithdraw1.add(Pw10);
+        
+//----------------------------------Transactions panels----------------------------------// 
+
+        JPanel Ptransactions = new JPanel(new GridLayout(5,4));
         
         
+//----------------------------------view balance panels----------------------------------//
+
+        JPanel Pview_balance = new JPanel(new GridLayout(2,1));
+        JPanel Pview_balance1 = new JPanel(new GridLayout(7,2));
+       // JPanel Pview_balance2 = new JPanel();
+        JPanel Pv1 = new JPanel();
+        JPanel Pv2 = new JPanel();
+        JPanel Pv3 = new JPanel();
+        JPanel Pv4 = new JPanel();
+        JPanel Pv5 = new JPanel();
+        JPanel Pv6 = new JPanel();
+        JPanel Pv7 = new JPanel();
+        JPanel Pv8 = new JPanel();
+        JPanel Pv9 = new JPanel();
+        JPanel Pv10 = new JPanel();
+        JPanel Pv11 = new JPanel();
+        JPanel Pv12 = new JPanel();
+        JPanel Pv13 = new JPanel();
+        JPanel Pv14 = new JPanel();
         
-        
-        
-        JPanel Ptransactions = new JPanel(new GridLayout(5,3));
-        JPanel Pwithdraw = new JPanel(new GridLayout(5,3));
-        JPanel Pview_balance = new JPanel(new GridLayout(5,3));
+        Pview_balance.add(Pview_balance1);
+        //Pview_balance.add(Pview_balance2);
+        Pview_balance1.add(Pv1);
+        Pview_balance1.add(Pv2);
+        Pview_balance1.add(Pv3);
+        Pview_balance1.add(Pv4);
+        Pview_balance1.add(Pv5);
+        Pview_balance1.add(Pv6);
+        Pview_balance1.add(Pv7);
+        Pview_balance1.add(Pv8);
+        Pview_balance1.add(Pv9);
+        Pview_balance1.add(Pv10);
+        Pview_balance1.add(Pv11);
+        Pview_balance1.add(Pv12);
+        Pview_balance1.add(Pv13);
+        Pview_balance1.add(Pv14);
+  
         
         tabs.add("Profile", Pprofile);
         tabs.add("Deposit", Pdeposit);
@@ -244,15 +332,15 @@ public class GUI implements ActionListener {
         tf_mobile_no = new JTextField(20);
         tf_mobile_no.setText("");
         
-            tf_name.setEditable(false);
-            tf_dob.setEditable(false); 
-            tf_nationality.setEditable(false);
-            tf_gender.setEditable(false);
-            tf_address.setEditable(false);
-            tf_account_no.setEditable(false);
-            tf_account_type.setEditable(false);
-            tf_mobile_no.setEditable(false);
-        
+        tf_name.setEditable(false);
+        tf_dob.setEditable(false); 
+        tf_nationality.setEditable(false);
+        tf_gender.setEditable(false);
+        tf_address.setEditable(false);
+        tf_account_no.setEditable(false);
+        tf_account_type.setEditable(false);
+        tf_mobile_no.setEditable(false);
+
         profile_edit_btn = new JButton("Edit");
         profile_edit_btn.addActionListener(this);
         profile_save_btn = new JButton("Save");
@@ -286,14 +374,18 @@ public class GUI implements ActionListener {
         
         tf_user_deposit = new JTextField(20);
         tf_user_deposit.setText("");
+        
         tf_name_deposit = new JTextField(20);
         tf_name_deposit.setText("");
         tf_name_deposit.setEditable(false);
+        
         tf_credit_account_deposit = new JTextField(20);
         tf_credit_account_deposit.setText("");
         tf_credit_account_deposit.setEditable(false);
+        
         tf_available_balance_deposit = new JTextField(20);
         tf_available_balance_deposit.setText("");
+        
         tf_amount_deposit = new JTextField(20);
         tf_amount_deposit.setText("");
 
@@ -325,16 +417,21 @@ public class GUI implements ActionListener {
         
         tf_user_transfer = new JTextField(20);
         tf_user_transfer.setText("");
+        
         tf_name_transfer = new JTextField(20);
         tf_name_transfer.setText("");
         tf_name_transfer.setEditable(false);
+        
         tf_debit_account_transfer = new JTextField(20);
         tf_debit_account_transfer.setText("");
         tf_debit_account_transfer.setEditable(false);
+        
         tf_available_balance_transfer = new JTextField(20);
         tf_available_balance_transfer.setText("");
+        
         tf_amount_transfer = new JTextField(20);
         tf_amount_transfer.setText("");
+        
         tf_credit_account_transfer = new JTextField(20);
         tf_credit_account_transfer.setText("");
         
@@ -354,7 +451,118 @@ public class GUI implements ActionListener {
         Pt11.add(l_credit_account_transfer);
         Pt12.add(tf_credit_account_transfer);
         Ptransfer2.add(transfer_btn);
+        
+ //---------------------------------------Withdraw Tap-------------------------------------//
+       
+        l_user_withdraw = new JLabel("User");
+        l_name_withdraw = new JLabel("Name"); 
+        l_debit_account_withdraw = new JLabel("Debit Account"); 
+        l_available_balance_withdraw = new JLabel("Available Balance");
+        l_amount_withdraw = new JLabel("Amount");
+        
+        tf_user_withdraw = new JTextField(20);
+        tf_user_withdraw.setText("");
+        
+        tf_name_withdraw = new JTextField(20);
+        tf_name_withdraw.setText("");
+        tf_name_withdraw.setEditable(false);
+        
+        tf_debit_account_withdraw = new JTextField(20);
+        tf_debit_account_withdraw.setText("");
+        tf_debit_account_withdraw.setEditable(false);
+        
+        tf_available_balance_withdraw = new JTextField(20);
+        tf_available_balance_withdraw.setText("");
+        
+        tf_amount_withdraw = new JTextField(20);
+        tf_amount_withdraw.setText("");
+
+        withdraw_btn = new JButton("Withdraw");
+        withdraw_btn.addActionListener(this);
+        
+        
+        Pw1.add(l_user_withdraw);
+        Pw2.add(tf_user_withdraw);
+        Pw3.add(l_name_withdraw);
+        Pw4.add(tf_name_withdraw);
+        Pw5.add(l_debit_account_withdraw);
+        Pw6.add(tf_debit_account_withdraw);
+        Pw7.add(l_available_balance_withdraw);
+        Pw8.add(tf_available_balance_withdraw);
+        Pw9.add(l_amount_withdraw);
+        Pw10.add(tf_amount_withdraw);
+        Pwithdraw2.add(withdraw_btn);
+        
+//--------------------------------------Transactions Tab---------------------------------//
+
+        String[][] data = {
+            { "1", "a", "1", "1" },
+            { "2", "b", "2", "2" }
+        };
+        // Column Names
+        String[] columnNames = { "Account No.", "Name", "MICR_No", "Balance" };
+        
+        // Initializing the JTable
+        transactions = new JTable(data, columnNames);
+        transactions.setBounds(30, 40, 200, 300);
+        
+        // adding it to JScrollPane
+        JScrollPane sp = new JScrollPane(transactions);
+        Ptransactions.add(sp);
  
+//----------------------------------View Balance Tab--------------------------------//
+
+        l_user_view = new JLabel("User");
+        l_name_view = new JLabel("Name"); 
+        l_account_no_view = new JLabel("Account No."); 
+        l_micr_no_view = new JLabel("MICR No."); 
+        l_roi_view = new JLabel("Rate of Interest (%)");
+        l_available_balance_view = new JLabel("Available Balance");
+        l_mod_balance_view = new JLabel("MOD Balance");
+        
+        tf_user_view = new JTextField(20);
+        tf_user_view.setText("");
+        
+        tf_name_view = new JTextField(20);
+        tf_name_view.setText("");
+        tf_name_view.setEditable(false);
+        
+        tf_account_no_view = new JTextField(20);
+        tf_account_no_view.setText("");
+        tf_account_no_view.setEditable(false);
+        
+        tf_micr_no_view = new JTextField(20);
+        tf_micr_no_view.setText("");
+        tf_micr_no_view.setEditable(false);
+        
+        tf_roi_view = new JTextField(20);
+        tf_roi_view.setText("");
+        tf_roi_view.setEditable(false);
+        
+        tf_available_balance_view = new JTextField(20);
+        tf_available_balance_view.setText("");
+        tf_available_balance_view.setEditable(false);
+        
+        tf_mod_balance_view = new JTextField(20);
+        tf_mod_balance_view.setText("");
+        tf_mod_balance_view.setEditable(false);
+        
+        
+        Pv1.add(l_user_view);
+        Pv2.add(tf_user_view);
+        Pv3.add(l_name_view);
+        Pv4.add(tf_name_view);
+        Pv5.add(l_account_no_view);
+        Pv6.add(tf_account_no_view);
+        Pv7.add(l_micr_no_view);
+        Pv8.add(tf_micr_no_view);
+        Pv9.add(l_roi_view);
+        Pv10.add(tf_roi_view);
+        Pv11.add(l_available_balance_view);
+        Pv12.add(tf_available_balance_view);
+        Pv13.add(l_mod_balance_view);
+        Pv14.add(tf_mod_balance_view);
+        
     }
 
     public static void main(String[] args) {
@@ -410,6 +618,10 @@ public class GUI implements ActionListener {
             
         }
         if (e.getSource() == transfer_btn)
+        {
+            
+        }
+        if (e.getSource() == withdraw_btn)
         {
             
         }
