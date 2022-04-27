@@ -10,16 +10,10 @@ package bankingsystem;
  * @author engah
  */
 public class Withdraw extends Transactions {
-    private float WithdrawAmount;
-    public void setWithdrawAmount(float WithdrawAmount) {
-        this.WithdrawAmount = WithdrawAmount;
-    }
-    public float getWithdrawAmount() {
-        return WithdrawAmount;
-    }
-    public Withdraw(Client MainClient , float WithdrawAmount){
-        this.MainClient = MainClient;
-        this.WithdrawAmount = WithdrawAmount;
+
+    public void withdrawAmount(double amount){
+        double currentBalance = this.mainClient.getBalance();
+        this.mainClient.setBalance(currentBalance - amount);
     }
     
 }

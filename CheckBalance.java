@@ -10,8 +10,8 @@ package bankingsystem;
  * @author engah
  */
 public class CheckBalance extends Transactions{
-    public CheckBalance(Client MainClient){
-        this.MainClient = MainClient;
+
+    public double getInfo(){
+        return mainClient.getBalance();
     }
-        
 }

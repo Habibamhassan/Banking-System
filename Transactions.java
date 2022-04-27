@@ -10,12 +10,16 @@ package bankingsystem;
  * @author engah
  */
 public abstract class Transactions {
-    protected Client MainClient;
-    public void setMainClient(Client MainClient) {
-        this.MainClient = MainClient;
+    protected Account mainClient;
+    
+    public Transactions(Account mainClient){
+        this.mainClient = mainClient;
     }
-    public Client getMainClient() {
-        return MainClient;
+    public void setMainClient(Account main) {
+        this.mainClient = main;
+    }
+    public Account getMainClient() {
+        return mainClient;
     }
     
 }

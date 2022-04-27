@@ -10,24 +10,17 @@ package bankingsystem;
  * @author engah
  */
 public class Transfer extends Transactions {
-    private float TransferAmount;
-    private Client HelperClient;
-    public void setHelperClient(Client HelperClient) {
-        this.HelperClient = HelperClient;
+    private Account helperClient;
+    
+    public void setHelperClient(Account helperClient) {
+        this.helperClient = helperClient;
     }
-    public Client geHelperClient() {
-        return HelperClient;
+    public Account geHelperClient() {
+        return helperClient;
     }
-    public void setTransferAmount(float TransferAmount) {
-        this.TransferAmount = TransferAmount;
-    }
-    public float getTransferAmount() {
-        return TransferAmount;
-    }
-    public Transfer(Client MainClient , Client HelperClient , float TransferAmount){
-        this.MainClient = MainClient;
-        this.HelperClient = HelperClient;
-        this.TransferAmount = TransferAmount;   
+    public Transfer(Account MainClient , Account HelperClient , float TransferAmount){
+        this.mainClient = mainClient;
+        this.helperClient = helperClient;
     }
     
 }
