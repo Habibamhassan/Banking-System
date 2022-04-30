@@ -17,18 +17,18 @@ public class Client extends User {
     //protected float Balance;
     protected String Address;
     protected int PhNo;
-    protected char AccNo;
+    protected int accountId;
     protected Account clientAccount;
-    protected int TransferredMoney;
-    protected float PrevTrans;
-    public Client(String N,int Age,int Id,String A,int P,char Acc, Account C){
+//    protected int TransferredMoney;
+//    protected float PrevTrans;
+    public Client(String N,int Age,int Id,String A,int P,int Acc, Account C){
         // Database Code to get account info
         Name=N;
         this.Age=Age;
         this.Id=Id;
         Address = A;
         PhNo =P;
-        AccNo=Acc;
+        accountId=Acc;
         clientAccount = C;
     }
     
@@ -48,12 +48,8 @@ public class Client extends User {
         this.PhNo = PhNo;
     }
 
-    public void setAccNo(char AccNo) {
-        this.AccNo = AccNo;
-    }
-
-    public void setPrevTrans(int PrevTrans) {
-        this.PrevTrans = PrevTrans;
+    public void setAccNo(int AccNo) {
+        this.accountId = AccNo;
     }
     
     public String getAddress() {
@@ -64,8 +60,8 @@ public class Client extends User {
         return PhNo;
     }
 
-    public char getAccNo() {
-        return AccNo;
+    public int getAccNo() {
+        return accountId;
     }
     
     public void get_loan(float amount)

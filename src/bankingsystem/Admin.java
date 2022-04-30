@@ -40,7 +40,4 @@ public class Admin extends User {
     public void EditAccNo(Client c,char A){
         c.setAccNo(A);
     }
-    public float ShowTransHistory(Client c){
-        return c.PrevTrans;
-    }
 }

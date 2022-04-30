@@ -11,6 +11,7 @@ package bankingsystem;
  */
 public abstract class Transactions {
     protected Account mainClient;
+    protected int transactionId;
     
     public void setMainClient(Account main) {
         this.mainClient = main;
@@ -18,5 +19,12 @@ public abstract class Transactions {
     public Account getMainClient() {
         return mainClient;
     }
-    
+
+    public int getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
+    }
 }

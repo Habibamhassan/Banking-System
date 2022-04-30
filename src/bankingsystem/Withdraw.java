@@ -20,5 +20,4 @@ public class Withdraw extends Transactions {
         double currentBalance = this.mainClient.getBalance();
         this.mainClient.setBalance(currentBalance - amount);
     }
-    
 }

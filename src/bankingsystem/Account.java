@@ -9,16 +9,14 @@ package bankingsystem;
  * @author lenovo
  */
 public class Account {
-    protected char acc_id;
+    protected int acc_id;
     protected double balance;
     protected String type;
-    protected  Client c;
 
-    public Account(char acc_id, double balance, String type, Client c) {
+    public Account(int acc_id, double balance, String type, Client c) {
         this.acc_id = acc_id;
         this.balance = balance;
         this.type = type;
-        this.c = c;
     }
 
     
@@ -27,7 +25,7 @@ public class Account {
         return acc_id;
     }
 
-    public void setAcc_id(char acc_id) {
+    public void setAcc_id(int acc_id) {
         this.acc_id = acc_id;
     }
 
@@ -39,25 +37,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public Client getC() {
-        return c;
-    }
-
-    public void setC(Client c) {
-        this.c = c;
-    }
-
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
-    }
-    
-    
-    public void create(Client c, char acc_id)
-    {
-         c.setAccNo(acc_id);
     }
 }
