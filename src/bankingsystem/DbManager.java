@@ -37,15 +37,11 @@ public class DbManager {
         // update client
         return "";
     }
-    
     /*
     public Client getClient(String username){
         Client c = new Client();
         return c;
     }
     */
-    
 }
-/* 
-alaa
-*/
+

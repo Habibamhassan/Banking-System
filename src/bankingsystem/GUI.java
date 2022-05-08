@@ -107,7 +107,14 @@ public class GUI implements ActionListener {
         login.setVisible(true);
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-//-------------------------------(ACCOUNT(SECOND)FRAME)--------------------------------//
+//-------------------------------(ADMIN(SECOND)FRAME)--------------------------------//
+        if(tf_username.getText() == "" && password.getText() == ""){
+            
+            
+        }
+
+
+//-------------------------------(CLIENT(SECOND)FRAME)--------------------------------//
         account = new JFrame();
         account.setTitle("MY ACCOUNT");
         account.setSize(900, 400);
