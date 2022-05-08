@@ -10,17 +10,14 @@ package gui;
  * @author DELL
  */
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -30,7 +27,8 @@ public class GUI implements ActionListener {
 
     JFrame login;
     JLabel l_username, l_password, l_loginError;
-    JTextField tf_username, tf_password;
+    JTextField tf_username; //tf_password;
+    JPasswordField password;
     JButton login_btn;
  
     JFrame account;
@@ -93,8 +91,8 @@ public class GUI implements ActionListener {
         l_loginError = new JLabel("");
         tf_username = new JTextField(20);
         tf_username.setText("");
-        tf_password = new JTextField(20);
-        tf_password.setText("");
+        password = new JPasswordField(20);
+        password.setText("");
         login_btn = new JButton("login");
         login_btn.setPreferredSize(new Dimension(100, 50));
         login_btn.addActionListener(this);
@@ -102,7 +100,7 @@ public class GUI implements ActionListener {
         Pusername.add(l_username);
         Pusername.add(tf_username);
         Ppassword.add(l_password);
-        Ppassword.add(tf_password);
+        Ppassword.add(password);
         Ploginbtn.add(login_btn);
         PloginError.add(l_loginError); 
         
@@ -574,18 +572,18 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() == login_btn) {
-            if(tf_username.getText().isEmpty() == false && tf_password.getText().isEmpty() == false) {
+            if(tf_username.getText().isEmpty() == false && password.getText().isEmpty() == false) {
                login.setVisible(false);
                account.setVisible(true);
                login.dispose();
             } 
-            else if (tf_username.getText().isEmpty() == true && tf_password.getText().isEmpty() == true) {
+            else if (tf_username.getText().isEmpty() == true && password.getText().isEmpty() == true) {
                 l_loginError.setText(" Please Enter the Username and Password ");
             } 
-            else if (tf_username.getText().isEmpty() == true && tf_password.getText().isEmpty() == false) {
+            else if (tf_username.getText().isEmpty() == true && password.getText().isEmpty() == false) {
                 l_loginError.setText(" Please Enter the Username");
             }
-            else if (tf_username.getText().isEmpty() == false && tf_password.getText().isEmpty() == true) {
+            else if (tf_username.getText().isEmpty() == false && password.getText().isEmpty() == true) {
                 l_loginError.setText(" Please Enter the Password");
             }
 
