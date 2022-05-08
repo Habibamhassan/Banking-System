@@ -121,12 +121,12 @@ public class DbManager {
             ResultSet rs=st.executeQuery("select name from client where name = '"+username+"'");
             if(rs.next()){
                st.executeQuery("delete from client where name = '"+username+"'");
-               return "deleted successfulluy";
+               return "deleted successfully";
             }
             else{
                 st.close();
                 con.close();
-                return "username not found ";
+                return "username not found";
             }   
      
         

@@ -13,7 +13,7 @@ public class Account {
     protected double balance;
     protected String type;
 
-    public Account(int acc_id, double balance, String type, Client c) {
+    public Account(int acc_id, double balance, String type) {
         this.acc_id = acc_id;
         this.balance = balance;
         this.type = type;

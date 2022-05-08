@@ -38,19 +38,19 @@ public class GUI implements ActionListener {
     JButton profile_edit_btn, profile_save_btn ;
     
     //Deposit tab
-    JLabel l_user_deposit, l_name_deposit, l_credit_account_deposit, l_available_balance_deposit, l_amount_deposit;
+    JLabel l_response_deposit, l_user_deposit, l_name_deposit, l_credit_account_deposit, l_available_balance_deposit, l_amount_deposit;
     JTextField tf_user_deposit, tf_name_deposit, tf_credit_account_deposit, tf_available_balance_deposit, tf_amount_deposit;
     JButton deposit_btn;
     
     //Transfer tab
-    JLabel l_user_transfer, l_name_transfer, l_debit_account_transfer, l_available_balance_transfer, l_amount_transfer,
+    JLabel l_response_transfer, l_user_transfer, l_name_transfer, l_debit_account_transfer, l_available_balance_transfer, l_amount_transfer,
             l_credit_account_transfer;
     JTextField tf_user_transfer, tf_name_transfer, tf_debit_account_transfer, tf_available_balance_transfer, 
             tf_amount_transfer, tf_credit_account_transfer;
     JButton transfer_btn;
     
     //Withdraw tab
-    JLabel l_user_withdraw, l_name_withdraw, l_debit_account_withdraw, l_available_balance_withdraw, l_amount_withdraw;
+    JLabel l_response_withdraw, l_user_withdraw, l_name_withdraw, l_debit_account_withdraw, l_available_balance_withdraw, l_amount_withdraw;
     JTextField tf_user_withdraw, tf_name_withdraw, tf_debit_account_withdraw, tf_available_balance_withdraw, tf_amount_withdraw;
     JButton withdraw_btn;
     
@@ -213,7 +213,7 @@ public class GUI implements ActionListener {
 //----------------------------------Deposit panels----------------------------------//    
 
         JPanel Pdeposit = new JPanel(new GridLayout(2,1));
-        JPanel Pdeposit1 = new JPanel(new GridLayout(5,2));
+        JPanel Pdeposit1 = new JPanel(new GridLayout(6,2));
         JPanel Pdeposit2 = new JPanel();
         JPanel Pd1 = new JPanel();
         JPanel Pd2 = new JPanel();
@@ -225,6 +225,7 @@ public class GUI implements ActionListener {
         JPanel Pd8 = new JPanel();
         JPanel Pd9 = new JPanel();
         JPanel Pd10 = new JPanel();
+        JPanel Pd11 = new JPanel();
 
         Pdeposit.add(Pdeposit1);
         Pdeposit.add(Pdeposit2);
@@ -238,12 +239,13 @@ public class GUI implements ActionListener {
         Pdeposit1.add(Pd8);
         Pdeposit1.add(Pd9);
         Pdeposit1.add(Pd10);
+        Pdeposit1.add(Pd11);
         
 
 //----------------------------------Transfer panels----------------------------------//
 
         JPanel Ptransfer = new JPanel(new GridLayout(2,1));
-        JPanel Ptransfer1 = new JPanel(new GridLayout(6,2));
+        JPanel Ptransfer1 = new JPanel(new GridLayout(7,2));
         JPanel Ptransfer2 = new JPanel();
         JPanel Pt1 = new JPanel();
         JPanel Pt2 = new JPanel();
@@ -257,6 +259,7 @@ public class GUI implements ActionListener {
         JPanel Pt10 = new JPanel();
         JPanel Pt11 = new JPanel();
         JPanel Pt12 = new JPanel();
+        JPanel Pt13 = new JPanel();
 
         Ptransfer.add(Ptransfer1);
         Ptransfer.add(Ptransfer2);
@@ -272,11 +275,12 @@ public class GUI implements ActionListener {
         Ptransfer1.add(Pt10);
         Ptransfer1.add(Pt11);
         Ptransfer1.add(Pt12);
+        Ptransfer1.add(Pt13);
              
 //----------------------------------Withdraw panels----------------------------------//    
 
         JPanel Pwithdraw = new JPanel(new GridLayout(2,1));
-        JPanel Pwithdraw1 = new JPanel(new GridLayout(5,2));
+        JPanel Pwithdraw1 = new JPanel(new GridLayout(6,2));
         JPanel Pwithdraw2 = new JPanel();
         JPanel Pw1 = new JPanel();
         JPanel Pw2 = new JPanel();
@@ -288,6 +292,7 @@ public class GUI implements ActionListener {
         JPanel Pw8 = new JPanel();
         JPanel Pw9 = new JPanel();
         JPanel Pw10 = new JPanel();
+        JPanel Pw11 = new JPanel();
 
         Pwithdraw.add(Pwithdraw1);
         Pwithdraw.add(Pwithdraw2);
@@ -301,6 +306,7 @@ public class GUI implements ActionListener {
         Pwithdraw1.add(Pw8);
         Pwithdraw1.add(Pw9);
         Pwithdraw1.add(Pw10);
+        Pwithdraw1.add(Pw11);
         
 //----------------------------------Transactions panels----------------------------------// 
 
@@ -391,11 +397,6 @@ public class GUI implements ActionListener {
         tf_account_type.setEditable(false);
         tf_mobile_no.setEditable(false);
 
-        profile_edit_btn = new JButton("Edit");
-        profile_edit_btn.addActionListener(this);
-        profile_save_btn = new JButton("Save");
-        profile_save_btn.addActionListener(this);
-
         Pp1.add(l_name);
         Pp2.add(tf_name);
         Pp3.add(l_dob);
@@ -412,8 +413,6 @@ public class GUI implements ActionListener {
         Pp14.add(tf_account_type);
         Pp15.add(l_mobile_no);
         Pp16.add(tf_mobile_no);
-        Pprofile2.add(profile_edit_btn);
-        Pprofile2.add(profile_save_btn);
 
 //----------------------------------Deposit tap------------------------------------//
         l_user_deposit = new JLabel("User");
@@ -421,6 +420,7 @@ public class GUI implements ActionListener {
         l_credit_account_deposit = new JLabel("Credit Account"); 
         l_available_balance_deposit = new JLabel("Available Balance");
         l_amount_deposit = new JLabel("Amount");
+        l_response_deposit = new JLabel("");
         
         tf_user_deposit = new JTextField(20);
         tf_user_deposit.setText("");
@@ -453,6 +453,7 @@ public class GUI implements ActionListener {
         Pd8.add(tf_available_balance_deposit);
         Pd9.add(l_amount_deposit);
         Pd10.add(tf_amount_deposit);
+        Pd11.add(l_response_deposit);
         Pdeposit2.add(deposit_btn);
   
  
@@ -464,6 +465,7 @@ public class GUI implements ActionListener {
         l_available_balance_transfer = new JLabel("Available Balance");
         l_amount_transfer = new JLabel("Amount");
         l_credit_account_transfer = new JLabel("Credit Account"); 
+        l_response_transfer = new JLabel("");
         
         tf_user_transfer = new JTextField(20);
         tf_user_transfer.setText("");
@@ -500,6 +502,7 @@ public class GUI implements ActionListener {
         Pt10.add(tf_amount_transfer);
         Pt11.add(l_credit_account_transfer);
         Pt12.add(tf_credit_account_transfer);
+        Pt13.add(l_response_transfer);
         Ptransfer2.add(transfer_btn);
         
  //---------------------------------------Withdraw Tap-------------------------------------//
@@ -509,6 +512,7 @@ public class GUI implements ActionListener {
         l_debit_account_withdraw = new JLabel("Debit Account"); 
         l_available_balance_withdraw = new JLabel("Available Balance");
         l_amount_withdraw = new JLabel("Amount");
+        l_response_withdraw = new JLabel("");
         
         tf_user_withdraw = new JTextField(20);
         tf_user_withdraw.setText("");
@@ -541,6 +545,7 @@ public class GUI implements ActionListener {
         Pw8.add(tf_available_balance_withdraw);
         Pw9.add(l_amount_withdraw);
         Pw10.add(tf_amount_withdraw);
+        Pw11.add(l_response_withdraw);
         Pwithdraw2.add(withdraw_btn);
         
 //--------------------------------------Transactions Tab---------------------------------//
@@ -1239,11 +1244,34 @@ public class GUI implements ActionListener {
                 l_loginError.setText(" Please Enter the Password");
             }
             else {
-               login.setVisible(false);
-               client_account.setVisible(true);
-               login.dispose(); 
+                /*
+                DbManager db = new DbManager();
+                String response = db.validateUser(tf_username.getText(), password.getText());
+                if(response == "Incorrect username"){
+                    l_loginError.setText("User not found");
+                }else if(response == "Incorrect password"){
+                    l_loginError.setText("Incorrect password");
+                }else if(response == "Login Successfully"){
+                    Client c = db.getClient();
+                    tf_name.setText(c.getName());
+                    tf_dob.setText(c.getDob());
+                    tf_gender.setText(c.getGender());
+                    tf_address.setText(c.getAddress());
+                    tf_nationality.setText(c.getGender());
+                    tf_account_no.setText(Integer.toString(c.getAccNo()));
+                    
+                    tf_name_view.setText(c.getName());
+                    tf_account_no_view.setText(Integer.toString(c.getAccNo()));
+                    Account a = c.getClientAccount();
+                    tf_available_balance_view.setText(Double.toString(a.getBalance()));
+                    */
+                    login.setVisible(false);
+                    client_account.setVisible(true);
+                    login.dispose();
+                //}
+                
+                 
             }
-
         }
         if (e.getSource() == profile_edit_btn)
         {
@@ -1270,22 +1298,49 @@ public class GUI implements ActionListener {
         }
         if (e.getSource() == deposit_btn)
         {
-            
+            int amount = Integer.parseInt(tf_amount_deposit.getText());
+            l_response_deposit.setText("Transaction Done Successfully");
+            Deposit d = new Deposit(c.getClientAccount());
+            d.depositAmount(amount);
         }
         if (e.getSource() == transfer_btn)
         {
-            
+            int amount = Integer.parseInt(tf_amount_transfer.getText());
+            String response = db.validateBalance(c.getName(), amount);
+            if(response == "Insufficient Balance"){
+                l_response_deposit.setText("Insufficient Funds");
+            }else if(response == "Sufficient Balance"){
+                l_response_deposit.setText("Transaction Done Successfully");
+                Transfer t = new Transfer(c.getClientAccount());
+                t.transferAmount(amount);
+            }  
         }
         if (e.getSource() == withdraw_btn)
         {
-            
+           int amount = Integer.parseInt(tf_amount_withdraw.getText());
+            String response = db.validateBalance(c.getName(), amount);
+            if(response == "Insufficient Balance"){
+                l_response_deposit.setText("Insufficient Funds");
+            }else if(response == "Sufficient Balance"){
+                l_response_deposit.setText("Transaction Done Successfully");
+                Withdraw w = new Withdraw(c.getClientAccount());
+                w.withdrawAmount(amount);
+            } 
         }
         if (e.getSource() == register_done_btn)
-        {
-            
+        {  
+            Account a = new Account(Integer.parseInt(tf_reg_account_no.getText()), 0, tf_reg_account_type.getText());
+            db.createClient(new Client(tf_reg_name.getText(), 0, tf_reg_address.getText(), Integer.parseInt(tf_reg_mobile_no.getText()), Integer.parseInt(tf_reg_account_no.getText()), a, tf_reg_gender.getText(), tf_reg_nationality.getText(), tf_reg_dob.getText())); 
         }
         if (e.getSource() == delete_btn)
         {
+            String userName = tf_delete_username.getText();
+            String response = db.deleteClient(userName);
+            if(response == "username not found"){
+                l_delete_Error.setText("User not found");
+            }else if(response == "deleted successfully"){
+               l_delete_Error.setText("Account Deleted"); 
+            }
             
         }
     }

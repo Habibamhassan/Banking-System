@@ -15,6 +15,9 @@ package bankingsystem;
  */
 public abstract class User {
     String Name;
+    protected String gender;
+    protected String nationality;
+    protected String dob;
     int Age;
     int Id;
 
@@ -43,6 +46,27 @@ public abstract class User {
         this.Age = Age;
     }
 
-    
-    
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }    
 }

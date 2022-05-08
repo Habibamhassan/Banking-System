@@ -20,16 +20,19 @@ public class Client extends User {
     protected int accountId;
     protected String password;
     protected Account clientAccount;
+    
 //    protected int TransferredMoney;
 //    protected float PrevTrans;
-    public Client(String N,int Age,int Id,String A,int P,int Acc, Account C){
+    public Client(String N, int Id,String A,int P,int Acc, Account C, String g, String n, String d){
         // Database Code to get account info
         Name=N;
-        this.Age=Age;
         this.Id=Id;
         Address = A;
         PhNo =P;
         accountId=Acc;
+        gender = g;
+        nationality = n;
+        dob = d;
         clientAccount = C;
     }
     
