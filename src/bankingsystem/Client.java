@@ -18,6 +18,7 @@ public class Client extends User {
     protected String Address;
     protected int PhNo;
     protected int accountId;
+    protected String password;
     protected Account clientAccount;
 //    protected int TransferredMoney;
 //    protected float PrevTrans;
@@ -76,5 +77,14 @@ public class Client extends User {
                     System.out.println("loan is rejected");
 
 
-    }        
+    }  
+
+    public String get_password() {
+        return password;
+    }
+
+    public void set_password(String password) {
+        this.password = password;
+    }
+    
 }
