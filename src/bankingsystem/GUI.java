@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bankingsystem;
 
 
@@ -102,7 +97,7 @@ public class GUI implements ActionListener {
             tf_available_balance_view_ad, tf_mod_balance_view_ad;
     
     //register new client tab
-    JLabel l_reg_name, l_reg_dob, l_reg_nationality, l_reg_gender, l_reg_address, l_reg_account_no, l_reg_account_type,
+    JLabel l_response_register, l_reg_name, l_reg_dob, l_reg_nationality, l_reg_gender, l_reg_address, l_reg_account_no, l_reg_account_type,
             l_reg_mobile_no;
     JTextField tf_reg_name, tf_reg_dob, tf_reg_nationality, tf_reg_gender, tf_reg_address, tf_reg_account_no, tf_reg_account_type,
             tf_reg_mobile_no;
@@ -673,7 +668,7 @@ public class GUI implements ActionListener {
 //----------------------------------Deposit panels----------------------------------//    
 
         JPanel Pdeposit_ad = new JPanel(new GridLayout(2,1));
-        JPanel Pdeposit1_ad = new JPanel(new GridLayout(5,2));
+        JPanel Pdeposit1_ad = new JPanel(new GridLayout(6,2));
         JPanel Pdeposit2_ad = new JPanel();
         JPanel Pd1_ad = new JPanel();
         JPanel Pd2_ad = new JPanel();
@@ -685,6 +680,7 @@ public class GUI implements ActionListener {
         JPanel Pd8_ad = new JPanel();
         JPanel Pd9_ad = new JPanel();
         JPanel Pd10_ad = new JPanel();
+        JPanel Pd11_ad = new JPanel();
 
         Pdeposit_ad.add(Pdeposit1_ad);
         Pdeposit_ad.add(Pdeposit2_ad);
@@ -698,12 +694,13 @@ public class GUI implements ActionListener {
         Pdeposit1_ad.add(Pd8_ad);
         Pdeposit1_ad.add(Pd9_ad);
         Pdeposit1_ad.add(Pd10_ad);
+        Pdeposit1_ad.add(Pd11_ad);
         
 
 //----------------------------------Transfer panels----------------------------------//
 
         JPanel Ptransfer_ad = new JPanel(new GridLayout(2,1));
-        JPanel Ptransfer1_ad = new JPanel(new GridLayout(6,2));
+        JPanel Ptransfer1_ad = new JPanel(new GridLayout(7,2));
         JPanel Ptransfer2_ad = new JPanel();
         JPanel Pt1_ad = new JPanel();
         JPanel Pt2_ad = new JPanel();
@@ -717,6 +714,7 @@ public class GUI implements ActionListener {
         JPanel Pt10_ad = new JPanel();
         JPanel Pt11_ad = new JPanel();
         JPanel Pt12_ad = new JPanel();
+        JPanel Pt13_ad = new JPanel();
 
         Ptransfer_ad.add(Ptransfer1_ad);
         Ptransfer_ad.add(Ptransfer2_ad);
@@ -732,11 +730,12 @@ public class GUI implements ActionListener {
         Ptransfer1_ad.add(Pt10_ad);
         Ptransfer1_ad.add(Pt11_ad);
         Ptransfer1_ad.add(Pt12_ad);
+        Ptransfer1_ad.add(Pt13_ad);
              
 //----------------------------------Withdraw panels----------------------------------//    
 
         JPanel Pwithdraw_ad = new JPanel(new GridLayout(2,1));
-        JPanel Pwithdraw1_ad = new JPanel(new GridLayout(5,2));
+        JPanel Pwithdraw1_ad = new JPanel(new GridLayout(6,2));
         JPanel Pwithdraw2_ad = new JPanel();
         JPanel Pw1_ad = new JPanel();
         JPanel Pw2_ad = new JPanel();
@@ -748,6 +747,7 @@ public class GUI implements ActionListener {
         JPanel Pw8_ad = new JPanel();
         JPanel Pw9_ad = new JPanel();
         JPanel Pw10_ad = new JPanel();
+        JPanel Pw11_ad = new JPanel();
 
         Pwithdraw_ad.add(Pwithdraw1_ad);
         Pwithdraw_ad.add(Pwithdraw2_ad);
@@ -761,6 +761,7 @@ public class GUI implements ActionListener {
         Pwithdraw1_ad.add(Pw8_ad);
         Pwithdraw1_ad.add(Pw9_ad);
         Pwithdraw1_ad.add(Pw10_ad);
+        Pwithdraw1_ad.add(Pw11_ad);
         
 //----------------------------------Transactions panels----------------------------------// 
 
@@ -807,7 +808,7 @@ public class GUI implements ActionListener {
 //----------------------------------Register new client panels----------------------------------//
 
         JPanel Pregister_ad = new JPanel(new GridLayout(2,1));
-        JPanel Pregister1_ad = new JPanel(new GridLayout(4,4));
+        JPanel Pregister1_ad = new JPanel(new GridLayout(5,4));
         JPanel Pregister2_ad = new JPanel();
         JPanel Pr1_ad = new JPanel();
         JPanel Pr2_ad = new JPanel();
@@ -825,6 +826,8 @@ public class GUI implements ActionListener {
         JPanel Pr14_ad = new JPanel();
         JPanel Pr15_ad = new JPanel();
         JPanel Pr16_ad = new JPanel();
+        JPanel Pr17_ad = new JPanel();
+        
         
         Pregister_ad.add(Pregister1_ad);
         Pregister_ad.add(Pregister2_ad);
@@ -844,6 +847,7 @@ public class GUI implements ActionListener {
         Pregister1_ad.add(Pr14_ad);
         Pregister1_ad.add(Pr15_ad);
         Pregister1_ad.add(Pr16_ad);
+        Pregister1_ad.add(Pr17_ad);
 //----------------------------------Delete clients panels----------------------------------//
 
         JPanel Pdelete_ad = new JPanel(new GridLayout(4,1)) ;
@@ -940,6 +944,7 @@ public class GUI implements ActionListener {
         l_credit_account_deposit = new JLabel("Credit Account"); 
         l_available_balance_deposit = new JLabel("Available Balance");
         l_amount_deposit = new JLabel("Amount");
+        l_response_deposit = new JLabel("");
         
         tf_user_deposit = new JTextField(20);
         tf_user_deposit.setText("");
@@ -972,6 +977,7 @@ public class GUI implements ActionListener {
         Pd8_ad.add(tf_available_balance_deposit);
         Pd9_ad.add(l_amount_deposit);
         Pd10_ad.add(tf_amount_deposit);
+        Pd11_ad.add(l_response_deposit);
         Pdeposit2_ad.add(deposit_btn);
   
  
@@ -983,6 +989,7 @@ public class GUI implements ActionListener {
         l_available_balance_transfer = new JLabel("Available Balance");
         l_amount_transfer = new JLabel("Amount");
         l_credit_account_transfer = new JLabel("Credit Account"); 
+        l_response_transfer = new JLabel("");
         
         tf_user_transfer = new JTextField(20);
         tf_user_transfer.setText("");
@@ -1019,6 +1026,7 @@ public class GUI implements ActionListener {
         Pt10_ad.add(tf_amount_transfer);
         Pt11_ad.add(l_credit_account_transfer);
         Pt12_ad.add(tf_credit_account_transfer);
+        Pt13_ad.add(l_response_transfer);
         Ptransfer2_ad.add(transfer_btn);
         
  //---------------------------------------Withdraw Tap-------------------------------------//
@@ -1028,6 +1036,7 @@ public class GUI implements ActionListener {
         l_debit_account_withdraw = new JLabel("Debit Account"); 
         l_available_balance_withdraw = new JLabel("Available Balance");
         l_amount_withdraw = new JLabel("Amount");
+        l_response_withdraw = new JLabel("");
         
         tf_user_withdraw = new JTextField(20);
         tf_user_withdraw.setText("");
@@ -1060,6 +1069,7 @@ public class GUI implements ActionListener {
         Pw8_ad.add(tf_available_balance_withdraw);
         Pw9_ad.add(l_amount_withdraw);
         Pw10_ad.add(tf_amount_withdraw);
+        Pw11_ad.add(l_response_withdraw);
         Pwithdraw2_ad.add(withdraw_btn);
         
 //--------------------------------------Transactions Tab---------------------------------//
@@ -1143,6 +1153,7 @@ public class GUI implements ActionListener {
         l_reg_account_no = new JLabel("Account No.");
         l_reg_account_type = new JLabel("Account Type");
         l_reg_mobile_no = new JLabel("Mobile No.");
+        l_response_register = new JLabel("");
         
         tf_reg_name = new JTextField(20);
         tf_reg_name.setText("");
@@ -1192,6 +1203,7 @@ public class GUI implements ActionListener {
         Pr14_ad.add(tf_reg_account_type);
         Pr15_ad.add(l_reg_mobile_no);
         Pr16_ad.add(tf_reg_mobile_no);
+        Pr17_ad.add(l_response_register);
         Pregister2_ad.add(register_done_btn);        
         
     
