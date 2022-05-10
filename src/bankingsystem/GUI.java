@@ -32,6 +32,7 @@ public class GUI implements ActionListener {
     JTextField tf_name, tf_dob, tf_nationality, tf_gender, tf_address, tf_account_no, tf_account_type, tf_mobile_no;
     JButton profile_edit_btn, profile_save_btn ;
     
+    JLabel try_name;
     //Deposit tab
     JLabel l_response_deposit, l_user_deposit, l_name_deposit, l_credit_account_deposit, l_available_balance_deposit, l_amount_deposit;
     JTextField tf_user_deposit, tf_name_deposit, tf_credit_account_deposit, tf_available_balance_deposit, tf_amount_deposit;
@@ -54,9 +55,9 @@ public class GUI implements ActionListener {
     
     //view balance tab
     JLabel l_user_view, l_name_view, l_account_no_view, l_micr_no_view, l_roi_view, l_available_balance_view, l_mod_balance_view;
-    JTextField tf_user_view, tf_name_view, tf_account_no_view, tf_micr_no_view, tf_roi_view, tf_available_balance_view,
+    JTextField tf_user_view, tf_name_view, tf_account_no_view, tf_micr_no_view, tf_roi_view, //tf_available_balance_view,
             tf_mod_balance_view;
-    
+    JLabel try_available_balance;
     
  //-----------------------------------admin frame-------------------------------------------   
     JFrame admin_account;
@@ -365,9 +366,10 @@ public class GUI implements ActionListener {
         l_account_no = new JLabel("Account No.");
         l_account_type = new JLabel("Account Type");
         l_mobile_no = new JLabel("Mobile No.");
+        try_name = new JLabel("");
         
-        tf_name = new JTextField(20);
-        tf_name.setText("");
+//        tf_name = new JTextField(20);
+//        tf_name.setText("");
         tf_dob = new JTextField(20);
         tf_dob.setText("");
         tf_nationality = new JTextField(20);
@@ -383,7 +385,7 @@ public class GUI implements ActionListener {
         tf_mobile_no = new JTextField(20);
         tf_mobile_no.setText("");
         
-        tf_name.setEditable(false);
+       // tf_name.setEditable(false);
         tf_dob.setEditable(false); 
         tf_nationality.setEditable(false);
         tf_gender.setEditable(false);
@@ -393,7 +395,8 @@ public class GUI implements ActionListener {
         tf_mobile_no.setEditable(false);
 
         Pp1.add(l_name);
-        Pp2.add(tf_name);
+        Pp2.add(try_name);
+        //Pp2.add(tf_name);
         Pp3.add(l_dob);
         Pp4.add(tf_dob);
         Pp5.add(l_nationality);
@@ -589,10 +592,13 @@ public class GUI implements ActionListener {
         tf_roi_view.setText("");
         tf_roi_view.setEditable(false);
         
-        tf_available_balance_view = new JTextField(20);
-        tf_available_balance_view.setText("");
-        tf_available_balance_view.setEditable(false);
         
+        try_available_balance = new JLabel("");
+        
+//        tf_available_balance_view = new JTextField(20);
+//        tf_available_balance_view.setText("");
+//        tf_available_balance_view.setEditable(false);
+//        
         tf_mod_balance_view = new JTextField(20);
         tf_mod_balance_view.setText("");
         tf_mod_balance_view.setEditable(false);
@@ -609,7 +615,8 @@ public class GUI implements ActionListener {
         Pv9.add(l_roi_view);
         Pv10.add(tf_roi_view);
         Pv11.add(l_available_balance_view);
-        Pv12.add(tf_available_balance_view);
+        Pv12.add(try_available_balance);
+        //Pv12.add(tf_available_balance_view);
         Pv13.add(l_mod_balance_view);
         Pv14.add(tf_mod_balance_view);
         
@@ -1118,9 +1125,9 @@ public class GUI implements ActionListener {
         tf_roi_view.setText("");
         tf_roi_view.setEditable(false);
         
-        tf_available_balance_view = new JTextField(20);
-        tf_available_balance_view.setText("");
-        tf_available_balance_view.setEditable(false);
+//        tf_available_balance_view = new JTextField(20);
+//        tf_available_balance_view.setText("");
+//        tf_available_balance_view.setEditable(false);
         
         tf_mod_balance_view = new JTextField(20);
         tf_mod_balance_view.setText("");
@@ -1138,7 +1145,7 @@ public class GUI implements ActionListener {
         Pv9_ad.add(l_roi_view);
         Pv10_ad.add(tf_roi_view);
         Pv11_ad.add(l_available_balance_view);
-        Pv12_ad.add(tf_available_balance_view);
+        //Pv12_ad.add(tf_available_balance_view);
         Pv13_ad.add(l_mod_balance_view);
         Pv14_ad.add(tf_mod_balance_view);
         
@@ -1267,7 +1274,9 @@ public class GUI implements ActionListener {
                     l_loginError.setText("Incorrect password");
                 }else if(response == "Login Successfully"){
                     c = db.getClient(tf_username.getText());
-                    tf_name.setText(c.getName());
+                    try_name.setText(c.getName());
+                 //   tf_name.setText(c.getName());
+                    String n = c.getName();
                     tf_dob.setText(c.getDob());
                     tf_gender.setText(c.getGender());
                     tf_address.setText(c.getAddress());
@@ -1277,7 +1286,8 @@ public class GUI implements ActionListener {
                     tf_name_view.setText(c.getName());
                     tf_account_no_view.setText(Integer.toString(c.getAccNo()));
                     Account a = c.getClientAccount();
-                    tf_available_balance_view.setText(Double.toString(a.getBalance()));
+                    //tf_available_balance_view.setText(Double.toString(a.getBalance()));
+                    try_available_balance.setText(Double.toString(a.getBalance()));
                   
                     login.setVisible(false);
                     client_account.setVisible(true);
@@ -1312,6 +1322,7 @@ public class GUI implements ActionListener {
         }
         if (e.getSource() == deposit_btn)
         {
+            System.out.print("SS");
             int amount = Integer.parseInt(tf_amount_deposit.getText());
             l_response_deposit.setText("Transaction Done Successfully");
             Deposit d = new Deposit(c.getClientAccount());
