@@ -15,8 +15,8 @@ public class Admin extends User {
         this.Id=Id;
   
     }
-    public void RegisterClient(String N,int Age,int Id,String A,int P,char Acc,Account c){
-        Client C = new Client(N,Age,Id,A,P,Acc,c);
+    public void RegisterClient(String N,int Age,int Id,String A,int P,int Acc,Account c, String g, String n, String d){
+        Client C = new Client(N, Id, A, P, Acc, c, g, n, d);
     }
     public void DeleteClient(Client c){
         c=null;
