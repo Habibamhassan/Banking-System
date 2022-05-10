@@ -23,7 +23,7 @@ public class Client extends User {
     
 //    protected int TransferredMoney;
 //    protected float PrevTrans;
-    public Client(String N, int Id,String A,int P,int Acc, Account C, String g, String n, String d){
+    public Client(String N, int Id,String A,int P,int Acc, Account C, String g, String n, String d , String pass , int age ){
         // Database Code to get account info
         Name=N;
         this.Id=Id;
@@ -34,6 +34,8 @@ public class Client extends User {
         nationality = n;
         dob = d;
         clientAccount = C;
+        password =pass;
+        Age = age; 
     }
     
     public Account getClientAccount() {
