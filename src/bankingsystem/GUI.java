@@ -1239,6 +1239,7 @@ public class GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Client c;
         
         if (e.getSource() == login_btn) {
             if("admin".equals(tf_username.getText()) && "admin".equals(password.getText())) { 
@@ -1256,15 +1257,15 @@ public class GUI implements ActionListener {
                 l_loginError.setText(" Please Enter the Password");
             }
             else {
-                /*
-                DbManager db = new DbManager();
+                
+                DbManager db = DbManager.getInstance();
                 String response = db.validateUser(tf_username.getText(), password.getText());
                 if(response == "Incorrect username"){
                     l_loginError.setText("User not found");
                 }else if(response == "Incorrect password"){
                     l_loginError.setText("Incorrect password");
                 }else if(response == "Login Successfully"){
-                    Client c = db.getClient();
+                    c = db.getClient(tf_username.getText());
                     tf_name.setText(c.getName());
                     tf_dob.setText(c.getDob());
                     tf_gender.setText(c.getGender());
@@ -1276,11 +1277,11 @@ public class GUI implements ActionListener {
                     tf_account_no_view.setText(Integer.toString(c.getAccNo()));
                     Account a = c.getClientAccount();
                     tf_available_balance_view.setText(Double.toString(a.getBalance()));
-                    */
+                  
                     login.setVisible(false);
                     client_account.setVisible(true);
                     login.dispose();
-                //}
+                }
                 
                  
             }
@@ -1339,15 +1340,16 @@ public class GUI implements ActionListener {
                 w.withdrawAmount(amount);
             } 
         }
+        /*
         if (e.getSource() == register_done_btn)
         {  
             Account a = new Account(Integer.parseInt(tf_reg_account_no.getText()), 0, tf_reg_account_type.getText());
-            db.createClient(new Client(tf_reg_name.getText(), 0, tf_reg_address.getText(), Integer.parseInt(tf_reg_mobile_no.getText()), Integer.parseInt(tf_reg_account_no.getText()), a, tf_reg_gender.getText(), tf_reg_nationality.getText(), tf_reg_dob.getText())); 
+//            db.createClient(new Client(tf_reg_name.getText(), tf_reg_address.getText(), Integer.parseInt(tf_reg_mobile_no.getText()), Integer.parseInt(tf_reg_account_no.getText()), a, tf_reg_gender.getText(), tf_reg_nationality.getText(), tf_reg_dob.getText())); 
         }
         if (e.getSource() == delete_btn)
         {
             String userName = tf_delete_username.getText();
-            String response = db.deleteClient(userName);
+//             String response = db.deleteClient(userName);
             if(response == "username not found"){
                 l_delete_Error.setText("User not found");
             }else if(response == "deleted successfully"){
@@ -1355,6 +1357,7 @@ public class GUI implements ActionListener {
             }
             
         }
+        */
     }
 
 }

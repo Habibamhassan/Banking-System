@@ -37,6 +37,19 @@ public class Client extends User {
         password =pass;
         Age = age; 
     }
+    public Client(String N,String A,int P,int Acc, Account C, String g, String n, String d , String pass){
+        // Database Code to get account info
+        Name=N;
+        this.Id=Id;
+        Address = A;
+        PhNo =P;
+        accountId=Acc;
+        gender = g;
+        nationality = n;
+        dob = d;
+        clientAccount = C;
+        password =pass; 
+    }
     
     public Account getClientAccount() {
         return clientAccount;
