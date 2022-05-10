@@ -1239,7 +1239,8 @@ public class GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Client c;
+        Client c = null;
+        DbManager db = null;
         
         if (e.getSource() == login_btn) {
             if("admin".equals(tf_username.getText()) && "admin".equals(password.getText())) { 
@@ -1258,7 +1259,7 @@ public class GUI implements ActionListener {
             }
             else {
                 
-                DbManager db = DbManager.getInstance();
+                db = DbManager.getInstance();
                 String response = db.validateUser(tf_username.getText(), password.getText());
                 if(response == "Incorrect username"){
                     l_loginError.setText("User not found");
@@ -1315,6 +1316,7 @@ public class GUI implements ActionListener {
             l_response_deposit.setText("Transaction Done Successfully");
             Deposit d = new Deposit(c.getClientAccount());
             d.depositAmount(amount);
+            db.updateClient(tf_username.getText(), c);
         }
         if (e.getSource() == transfer_btn)
         {
@@ -1325,7 +1327,10 @@ public class GUI implements ActionListener {
             }else if(response == "Sufficient Balance"){
                 l_response_deposit.setText("Transaction Done Successfully");
                 Transfer t = new Transfer(c.getClientAccount());
+                //t.setHelperClient(get)
                 t.transferAmount(amount);
+                db.updateClient(tf_username.getText(), c);
+                //db.updateClient(tf_username.getText(), c);
             }  
         }
         if (e.getSource() == withdraw_btn)
@@ -1338,6 +1343,7 @@ public class GUI implements ActionListener {
                 l_response_deposit.setText("Transaction Done Successfully");
                 Withdraw w = new Withdraw(c.getClientAccount());
                 w.withdrawAmount(amount);
+                db.updateClient(tf_username.getText(), c);
             } 
         }
         /*
