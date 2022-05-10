@@ -13,6 +13,18 @@ import java.util.logging.Logger;
  */
 public class DbManager {
     Connection con;
+    private static DbManager db;
+    
+    private DbManager(){
+        //Dummy
+    }
+    public static DbManager getInstance(){
+        if(db == null){
+            return new DbManager();
+        }else{
+            return db;
+        }
+    }
     private  void createConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -175,43 +187,39 @@ public class DbManager {
     public Client getClient(String username){
         createConnection();
         Client c = null ;
-             try {
+            try {
            
-            Statement st = con.createStatement();
-            ResultSet rs=st.executeQuery("select * from client where name = '"+username+"'");
-            int id = 0;
-            String name = null;
-            int age = 0;
-            String password = null;
-            int phNo = 0;
-            String address = null;
-             Double balance = null;
-             String gender = null;
-             String dob = null;
-              String nationality = null;
-              String type = null;
-            while(rs.next()){
-                 id=rs.getInt("accid");
-                 name=rs.getString("name");
-                age = rs.getInt("age");
-                password=rs.getString("password");
-                phNo=rs.getInt("phNo");
-                 address = rs.getString("address");
-                balance = rs.getDouble("balance");
-                gender = rs.getString("gender");
-                dob = rs.getString("dob");
-                nationality = rs.getString("nationality");
-                type = rs.getString("type");
+                Statement st = con.createStatement();
+                ResultSet rs=st.executeQuery("select * from client where name = '"+username+"'");
+                int id = 0;
+                String name = null;
+                int age = 0;
+                String password = null;
+                int phNo = 0;
+                String address = null;
+                Double balance = null;
+                String gender = null;
+                String dob = null;
+                String nationality = null;
+                String type = null;
+                while(rs.next()){
+                    id=rs.getInt("accid");
+                    name=rs.getString("name");
+                    age = rs.getInt("age");
+                    password=rs.getString("password");
+                    phNo=rs.getInt("phNo");
+                    address = rs.getString("address");
+                    balance = rs.getDouble("balance");
+                    gender = rs.getString("gender");
+                    dob = rs.getString("dob");
+                    nationality = rs.getString("nationality");
+                    type = rs.getString("type");
+                }
+                Account acc=new Account(id,balance,type);
+                c = new Client (name,id,address,phNo,id,acc,gender,nationality,dob,password,age);
+            }catch (SQLException ex) {
+                Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Account acc=new Account(id,balance,type);
-      c = new Client (name,id,address,phNo,id,acc,gender,nationality,dob,password,age);
-        
-        
-         }catch (SQLException ex) {
-            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-             return c;
-    }
-    
-    
+            return c;
+    }    
 }
