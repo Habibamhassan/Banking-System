@@ -23,7 +23,8 @@ public class GUI implements ActionListener {
     JPasswordField password;
     JButton login_btn;
     
-    
+    Client c = null;
+        DbManager db = null;
  //-----------------------------------client frame-------------------------------------------
     JFrame client_account;
     
@@ -435,7 +436,7 @@ public class GUI implements ActionListener {
         tf_available_balance_deposit.setText("");
         
         tf_amount_deposit = new JTextField(20);
-        tf_amount_deposit.setText("");
+        //tf_amount_deposit.setText("");
 
         deposit_btn = new JButton("Deposit");
         deposit_btn.addActionListener(this);
@@ -968,7 +969,7 @@ public class GUI implements ActionListener {
         tf_available_balance_deposit.setText("");
         
         tf_amount_deposit = new JTextField(20);
-        tf_amount_deposit.setText("");
+       // tf_amount_deposit.setText("");
 
         deposit_btn_ad = new JButton("Deposit");
         deposit_btn_ad.addActionListener(this);
@@ -1246,8 +1247,7 @@ public class GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Client c = null;
-        DbManager db = null;
+        
         
         if (e.getSource() == login_btn) {
             if("admin".equals(tf_username.getText()) && "admin".equals(password.getText())) { 
@@ -1326,6 +1326,7 @@ public class GUI implements ActionListener {
             System.out.print("SS");
             db = DbManager.getInstance();
             String s = tf_amount_deposit.getText();
+            System.out.println(s);
             //double amount = Double.parseDouble(tf_amount_deposit.getText());
             l_response_deposit.setText("Transaction Done Successfully");
             Deposit d = new Deposit(c.getClientAccount());
