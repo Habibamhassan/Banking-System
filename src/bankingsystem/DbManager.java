@@ -109,18 +109,19 @@ public class DbManager {
         try {
             // TODO add your handling code here:
            
-            PreparedStatement st = con.prepareStatement("insert into client values(?,?,?,?,?,?,?,?,?,?)");
-            st.setString(1, c.getName());
-            st.setInt(2,c.getAge());
-            st.setString(3, c.get_password());
-            st.setInt(4, c.getPhNo());
-            st.setString(5, c.getAddress());
+            PreparedStatement st = con.prepareStatement("insert into client values(?,?,?,?,?,?,?,?,?,?,?)");
+            st.setInt(1, 0);
+            st.setString(2, c.getName());
+            st.setInt(3,c.getAge());
+            st.setString(4, c.get_password());
+            st.setInt(5, c.getPhNo());
+            st.setString(6, c.getAddress());
             Account acc = c.getClientAccount();
-            st.setDouble(6,acc.getBalance());
-            st.setString(7, c.getGender());
-            st.setString(8,c.getDob());
-            st.setString(9,c.getNationality());
-            st.setString(10,acc.getType());
+            st.setDouble(7,acc.getBalance());
+            st.setString(8, c.getGender());
+            st.setString(9,c.getDob());
+            st.setString(10,c.getNationality());
+            st.setString(11,acc.getType());
             st.execute();
             st.close();
             con.close();
@@ -191,6 +192,44 @@ public class DbManager {
            
                 Statement st = con.createStatement();
                 ResultSet rs=st.executeQuery("select * from client where name = '"+username+"'");
+                int id = 0;
+                String name = null;
+                int age = 0;
+                String password = null;
+                int phNo = 0;
+                String address = null;
+                Double balance = null;
+                String gender = null;
+                String dob = null;
+                String nationality = null;
+                String type = null;
+                while(rs.next()){
+                    id=rs.getInt("accid");
+                    name=rs.getString("name");
+                    age = rs.getInt("age");
+                    password=rs.getString("password");
+                    phNo=rs.getInt("phNo");
+                    address = rs.getString("address");
+                    balance = rs.getDouble("balance");
+                    gender = rs.getString("gender");
+                    dob = rs.getString("dob");
+                    nationality = rs.getString("nationality");
+                    type = rs.getString("type");
+                }
+                Account acc=new Account(id,balance,type);
+                c = new Client (name,id,address,phNo,id,acc,gender,nationality,dob,password,age);
+            }catch (SQLException ex) {
+                Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return c;
+    }    
+    public Client getClient(int clientid){
+        createConnection();
+        Client c = null ;
+            try {
+           
+                Statement st = con.createStatement();
+                ResultSet rs=st.executeQuery("select * from client where accid = '"+clientid+"'");
                 int id = 0;
                 String name = null;
                 int age = 0;

@@ -371,7 +371,7 @@ public class GUI implements ActionListener {
 //        tf_name = new JTextField(20);
 //        tf_name.setText("");
         tf_dob = new JTextField(20);
-        tf_dob.setText("");
+        //tf_dob.setText("");
         tf_nationality = new JTextField(20);
         tf_nationality.setText("");
         tf_gender = new JTextField(20);
@@ -970,8 +970,8 @@ public class GUI implements ActionListener {
         tf_amount_deposit = new JTextField(20);
         tf_amount_deposit.setText("");
 
-        deposit_btn = new JButton("Deposit");
-        deposit_btn.addActionListener(this);
+        deposit_btn_ad = new JButton("Deposit");
+        deposit_btn_ad.addActionListener(this);
         
         
         Pd1_ad.add(l_user_deposit);
@@ -985,7 +985,7 @@ public class GUI implements ActionListener {
         Pd9_ad.add(l_amount_deposit);
         Pd10_ad.add(tf_amount_deposit);
         Pd11_ad.add(l_response_deposit);
-        Pdeposit2_ad.add(deposit_btn);
+        Pdeposit2_ad.add(deposit_btn_ad);
   
  
 //------------------------------Transfer Tab------------------------------------//
@@ -1297,7 +1297,7 @@ public class GUI implements ActionListener {
                  
             }
         }
-        if (e.getSource() == profile_edit_btn)
+        else if (e.getSource() == profile_edit_btn)
         {
             tf_name.setEditable(true);
             tf_dob.setEditable(true); 
@@ -1308,7 +1308,7 @@ public class GUI implements ActionListener {
             tf_account_type.setEditable(true);
             tf_mobile_no.setEditable(true);
         }
-        if (e.getSource() == profile_save_btn)
+        else if (e.getSource() == profile_save_btn)
         {
             //................................
             tf_name.setEditable(false);
@@ -1320,16 +1320,20 @@ public class GUI implements ActionListener {
             tf_account_type.setEditable(false);
             tf_mobile_no.setEditable(false);
         }
-        if (e.getSource() == deposit_btn)
+        
+        else if (e.getSource() == deposit_btn)
         {
             System.out.print("SS");
-            int amount = Integer.parseInt(tf_amount_deposit.getText());
+            db = DbManager.getInstance();
+            String s = tf_amount_deposit.getText();
+            //double amount = Double.parseDouble(tf_amount_deposit.getText());
             l_response_deposit.setText("Transaction Done Successfully");
             Deposit d = new Deposit(c.getClientAccount());
-            d.depositAmount(amount);
-            db.updateClient(tf_username.getText(), c);
+            //d.depositAmount(amount);
+            //db.updateClient(tf_username.getText(), c);
         }
-        if (e.getSource() == transfer_btn)
+        
+       else if (e.getSource() == transfer_btn)
         {
             int amount = Integer.parseInt(tf_amount_transfer.getText());
             String response = db.validateBalance(c.getName(), amount);
@@ -1344,7 +1348,7 @@ public class GUI implements ActionListener {
                 //db.updateClient(tf_username.getText(), c);
             }  
         }
-        if (e.getSource() == withdraw_btn)
+       else if (e.getSource() == withdraw_btn)
         {
            int amount = Integer.parseInt(tf_amount_withdraw.getText());
             String response = db.validateBalance(c.getName(), amount);
@@ -1375,6 +1379,18 @@ public class GUI implements ActionListener {
             
         }
         */
+        
     }
-
+   /* private void deposit_btnActionPerformed(ActionEvent evt){
+        Client c = null;
+        DbManager db = null;
+        
+        db = DbManager.getInstance();
+        int amount = Integer.parseInt(tf_amount_deposit.getText());
+            l_response_deposit.setText("Transaction Done Successfully");
+            Deposit d = new Deposit(c.getClientAccount());
+            d.depositAmount(amount);
+            db.updateClient(tf_username.getText(), c);
+    
+    }*/
 }
