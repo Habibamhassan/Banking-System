@@ -370,10 +370,10 @@ public class GUI implements ActionListener {
         l_account_no = new JLabel("Account No.");
         l_account_type = new JLabel("Account Type");
         l_mobile_no = new JLabel("Mobile No.");
-        try_name = new JLabel("");
+        //try_name = new JLabel("");
         
-//        tf_name = new JTextField(20);
-//        tf_name.setText("");
+       tf_name = new JTextField(20);
+    tf_name.setText("");
         tf_dob = new JTextField(20);
         tf_dob.setText("");
         tf_nationality = new JTextField(20);
@@ -389,7 +389,7 @@ public class GUI implements ActionListener {
         tf_mobile_no = new JTextField(20);
         tf_mobile_no.setText("");
         
-       // tf_name.setEditable(false);
+        tf_name.setEditable(false);
         tf_dob.setEditable(false); 
         tf_nationality.setEditable(false);
         tf_gender.setEditable(false);
@@ -399,8 +399,8 @@ public class GUI implements ActionListener {
         tf_mobile_no.setEditable(false);
 
         Pp1.add(l_name);
-        Pp2.add(try_name);
-        //Pp2.add(tf_name);
+        //Pp2.add(try_name);
+        Pp2.add(tf_name);
         Pp3.add(l_dob);
         Pp4.add(tf_dob);
         Pp5.add(l_nationality);
@@ -1277,18 +1277,21 @@ public class GUI implements ActionListener {
                     l_loginError.setText("Incorrect password");
                 }else if(response == "Login Successfully"){
                     c = db.getClient(tf_username.getText());
-                    try_name.setText(c.getName());
-                 //   tf_name.setText(c.getName());
+                    //try_name.setText(c.getName());
+                   tf_name.setText(c.getName());
                     String n = c.getName();
                     tf_dob.setText(c.getDob());
                     tf_gender.setText(c.getGender());
                     tf_address.setText(c.getAddress());
-                    tf_nationality.setText(c.getGender());
+                    tf_nationality.setText(c.getNationality());
                     tf_account_no.setText(Integer.toString(c.getAccNo()));
                     
                     tf_name_view.setText(c.getName());
+                    tf_mobile_no.setText(Integer.toString(c.getPhNo()));
                     tf_account_no_view.setText(Integer.toString(c.getAccNo()));
                     Account a = c.getClientAccount();
+                    tf_account_type.setText(a.getType());
+                    
                     //tf_available_balance_view.setText(Double.toString(a.getBalance()));
                     try_available_balance.setText(Double.toString(a.getBalance()));
                   
@@ -1326,25 +1329,22 @@ public class GUI implements ActionListener {
         
         else if (e.getSource() == deposit_btn)
         {
-            System.out.print("SS");
             db = DbManager.getInstance();
-            String s = tf_amount_deposit.getText();
-            System.out.println(s);
-            //double amount = Double.parseDouble(tf_amount_deposit.getText());
+            double amount = Double.parseDouble(tf_amount_deposit.getText());
             l_response_deposit.setText("Transaction Done Successfully");
             Deposit d = new Deposit(c.getClientAccount());
-            //d.depositAmount(amount);
-            //db.updateClient(tf_username.getText(), c);
+            d.depositAmount(amount);
+            db.updateClient(tf_username.getText(), c);
         }
         
        else if (e.getSource() == transfer_btn)
         {
-            int amount = Integer.parseInt(tf_amount_transfer.getText());
+            double amount = Double.parseDouble(tf_amount_transfer.getText());
             String response = db.validateBalance(c.getName(), amount);
             if(response == "Insufficient Balance"){
-                l_response_deposit.setText("Insufficient Funds");
+                l_response_transfer.setText("Insufficient Funds");
             }else if(response == "Sufficient Balance"){
-                l_response_deposit.setText("Transaction Done Successfully");
+                l_response_transfer.setText("Transaction Done Successfully");
                 Transfer t = new Transfer(c.getClientAccount());
                 //t.setHelperClient(get)
                 t.transferAmount(amount);
@@ -1354,15 +1354,16 @@ public class GUI implements ActionListener {
         }
        else if (e.getSource() == withdraw_btn)
         {
-           int amount = Integer.parseInt(tf_amount_withdraw.getText());
+           double amount = Double.parseDouble(tf_amount_withdraw.getText());
             String response = db.validateBalance(c.getName(), amount);
             if(response == "Insufficient Balance"){
-                l_response_deposit.setText("Insufficient Funds");
+                l_response_withdraw.setText("Insufficient Funds");
             }else if(response == "Sufficient Balance"){
-                l_response_deposit.setText("Transaction Done Successfully");
+                l_response_withdraw.setText("Transaction Done Successfully");
                 Withdraw w = new Withdraw(c.getClientAccount());
                 w.withdrawAmount(amount);
                 db.updateClient(tf_username.getText(), c);
+                
             } 
         }
         /*

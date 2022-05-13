@@ -30,7 +30,7 @@ public class DbManager {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "Omar1801246");
            
-            System.out.println("Successully Connected");
+            //System.out.println("Successully Connected");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -75,14 +75,16 @@ public class DbManager {
   return "Login Successfully";
     }
     
-    public String validateBalance(String username, int amount){
+    public String validateBalance(String username, double amount){
+        double balance =0;
         createConnection();
         try {
            
             Statement st = con.createStatement();
             ResultSet rs=st.executeQuery("select balance from client where name = '"+username+"'");
-            
-                double balance =rs.getDouble("balance");
+            while(rs.next()){
+                 balance =rs.getDouble("balance");
+            }
                 if(balance>=amount){
                     st.close();
                     con.close();
@@ -261,4 +263,5 @@ public class DbManager {
             }
             return c;
     }    
+   
 }
