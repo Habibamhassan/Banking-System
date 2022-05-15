@@ -185,6 +185,32 @@ public class DbManager {
         }
         return "updated successfully";
     }
+    public String updateClient(int id, Client c){
+        createConnection();
+        try {
+            PreparedStatement st = con.prepareStatement("UPDATE client SET name = ? ,age = ? , password = ? , phNo = ? , address = ? , balance = ? , gender = ? , dob = ? ,  nationality = ? , type = ?"
+                    + " WHERE accid = ?;");
+            st.setString(1, c.getName());
+            st.setInt(2,c.getAge());
+            st.setString(3, c.get_password());
+            st.setInt(4, c.getPhNo());
+            st.setString(5, c.getAddress());
+            Account acc = c.getClientAccount();
+            st.setDouble(6,acc.getBalance());
+            st.setString(7, c.getGender());
+            st.setString(8,c.getDob());
+            st.setString(9,c.getNationality());
+            st.setString(10,acc.getType());
+            st.setInt(11,id);
+            st.executeUpdate();
+            st.close();
+            con.close();
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "updated successfully";
+    }
     
     
     public Client getClient(String username){
@@ -263,5 +289,43 @@ public class DbManager {
             }
             return c;
     }    
+    public void recordTransaction(int accountID,double amount,String type){
+        createConnection();
+        
+        try {
+            // TODO add your handling code here:
+           
+            PreparedStatement st = con.prepareStatement("insert into transaction(transID,amount,clientID,type) values(?,?,?,?)");
+            st.setInt(1, 0);
+            st.setDouble(2, amount);
+            st.setInt(3,accountID);
+            st.setString(4, type);
+            st.execute();
+            st.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public void recordTransaction(int accountID,double amount,String type,int targetID){
+        createConnection();
+        
+        try {
+            // TODO add your handling code here:
+           
+            PreparedStatement st = con.prepareStatement("insert into transaction values(?,?,?,?,?)");
+            st.setInt(1, 0);
+            st.setDouble(2, amount);
+            st.setInt(3,accountID);
+            st.setInt(4,targetID);
+            st.setString(5, type);
+            st.execute();
+            st.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
    
 }

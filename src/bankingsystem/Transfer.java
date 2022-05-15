@@ -18,7 +18,8 @@ public class Transfer extends Transactions {
     public Account geHelperClient() {
         return helperClient;
     }
-    public Transfer(Account HelperClient){
+    public Transfer(Account mainclient,Account HelperClient){
+        this.mainClient = mainclient;
         this.helperClient = HelperClient;
     }
     public void transferAmount(double amount){

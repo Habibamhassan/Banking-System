@@ -1326,8 +1326,8 @@ public class GUI implements ActionListener {
                     Account a = c.getClientAccount();
                     tf_account_type.setText(a.getType());
                     
-                    //tf_available_balance_view.setText(Double.toString(a.getBalance()));
-                    try_available_balance.setText(Double.toString(a.getBalance()));
+                    tf_available_balance_view.setText(Double.toString(a.getBalance()));
+                    //try_available_balance.setText(Double.toString(a.getBalance()));
                   
                     login.setVisible(false);
                     client_account.setVisible(true);
@@ -1369,21 +1369,24 @@ public class GUI implements ActionListener {
             Deposit d = new Deposit(c.getClientAccount());
             d.depositAmount(amount);
             db.updateClient(tf_username.getText(), c);
+            db.recordTransaction(c.getId(), amount, "deposit");
         }
         
        else if (e.getSource() == transfer_btn)
         {
             double amount = Double.parseDouble(tf_amount_transfer.getText());
+            int targetid = Integer.parseInt(tf_target_acc_id.getText());
             String response = db.validateBalance(c.getName(), amount);
             if(response == "Insufficient Balance"){
                 l_response_transfer.setText("Insufficient Funds");
             }else if(response == "Sufficient Balance"){
                 l_response_transfer.setText("Transaction Done Successfully");
-                Transfer t = new Transfer(c.getClientAccount());
-                //t.setHelperClient(get)
+                    Client target =db.getClient(targetid);
+                Transfer t = new Transfer(c.getClientAccount(),target.getClientAccount());
                 t.transferAmount(amount);
                 db.updateClient(tf_username.getText(), c);
-                //db.updateClient(tf_username.getText(), c);
+                db.updateClient(targetid, target);
+                db.recordTransaction(c.getId(), amount, "transfer",targetid);
             }  
         }
        else if (e.getSource() == withdraw_btn)
@@ -1397,7 +1400,7 @@ public class GUI implements ActionListener {
                 Withdraw w = new Withdraw(c.getClientAccount());
                 w.withdrawAmount(amount);
                 db.updateClient(tf_username.getText(), c);
-                
+                db.recordTransaction(c.getId(), amount, "withdraw");
             } 
         }
         /*
@@ -1450,5 +1453,5 @@ public class GUI implements ActionListener {
             db.updateClient(tf_username.getText(), c);
     
     }*/
-    
+
 }
