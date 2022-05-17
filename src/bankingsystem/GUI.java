@@ -5,6 +5,13 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -116,7 +123,7 @@ public class GUI implements ActionListener {
 //    JPasswordField password_register;
     
     //delete client tab
-    JLabel l_delete_username, l_delete_password, l_delete_Error;
+    JLabel l_response_delete, l_delete_username, l_delete_password, l_delete_Error;
     JTextField tf_delete_username; //tf_password;
     JPasswordField delete_password;
     JButton delete_btn;
@@ -404,7 +411,7 @@ public class GUI implements ActionListener {
         tf_mobile_no = new JTextField(20);
         tf_mobile_no.setText("");
         
-        //tf_name.setEditable(false);
+        tf_name.setEditable(false);
         tf_dob.setEditable(false); 
         tf_nationality.setEditable(false);
         tf_gender.setEditable(false);
@@ -592,7 +599,7 @@ public class GUI implements ActionListener {
         l_name_view = new JLabel("Name"); 
         l_account_no_view = new JLabel("Account No."); 
         //l_micr_no_view = new JLabel("MICR No."); 
-        l_roi_view = new JLabel("Rate of Interest (%)");
+        //l_roi_view = new JLabel("Rate of Interest (%)");
         l_available_balance_view = new JLabel("Available Balance");
         //l_mod_balance_view = new JLabel("MOD Balance");
         
@@ -611,9 +618,9 @@ public class GUI implements ActionListener {
 //        tf_micr_no_view.setText("");
 //        tf_micr_no_view.setEditable(false);
         
-        tf_roi_view = new JTextField(20);
-        tf_roi_view.setText("");
-        tf_roi_view.setEditable(false);
+//        tf_roi_view = new JTextField(20);
+//        tf_roi_view.setText("");
+//        tf_roi_view.setEditable(false);
         
         
 //        try_available_balance = new JLabel("");
@@ -638,11 +645,11 @@ public class GUI implements ActionListener {
         Pv6.add(tf_account_no_view);
 //        Pv7.add(l_micr_no_view);
 //        Pv8.add(tf_micr_no_view);
-        Pv7.add(l_roi_view);
-        Pv8.add(tf_roi_view);
-        Pv9.add(l_available_balance_view);
+//        Pv7.add(l_roi_view);
+//        Pv8.add(tf_roi_view);
+        Pv7.add(l_available_balance_view);
         //Pv12.add(try_available_balance);
-        Pv10.add(tf_available_balance_view);
+        Pv8.add(tf_available_balance_view);
         Pview_balance2.add(refresh);
 //        Pv13.add(l_mod_balance_view);
 //        Pv14.add(tf_mod_balance_view);
@@ -993,8 +1000,8 @@ public class GUI implements ActionListener {
 //----------------------------------Deposit tap------------------------------------//
         //l_user_deposit_ad = new JLabel("User");
         l_name_deposit_ad = new JLabel("Username"); 
-        l_account_no_deposit_ad = new JLabel("Account No."); 
-        l_available_balance_deposit_ad = new JLabel("Available Balance");
+//        l_account_no_deposit_ad = new JLabel("Account No."); 
+//        l_available_balance_deposit_ad = new JLabel("Available Balance");
         l_amount_deposit_ad = new JLabel("Amount");
         l_response_deposit_ad = new JLabel("");
         
@@ -1005,13 +1012,13 @@ public class GUI implements ActionListener {
         tf_name_deposit_ad.setText("");
         //tf_name_deposit_ad.setEditable(false);
         
-        tf_account_no_deposit_ad = new JTextField(20);
-        tf_account_no_deposit_ad.setText("");
-        tf_account_no_deposit_ad.setEditable(false);
-        
-        tf_available_balance_deposit_ad = new JTextField(20);
-        tf_available_balance_deposit_ad.setText("");
-        tf_available_balance_deposit_ad.setEditable(false);
+//        tf_account_no_deposit_ad = new JTextField(20);
+//        tf_account_no_deposit_ad.setText("");
+//        tf_account_no_deposit_ad.setEditable(false);
+//        
+//        tf_available_balance_deposit_ad = new JTextField(20);
+//        tf_available_balance_deposit_ad.setText("");
+//        tf_available_balance_deposit_ad.setEditable(false);
         
         tf_amount_deposit_ad = new JTextField(20);
         tf_amount_deposit_ad.setText("");
@@ -1024,10 +1031,10 @@ public class GUI implements ActionListener {
 //        Pd2_ad.add(tf_user_deposit_ad);
         Pd3_ad.add(l_name_deposit_ad);
         Pd4_ad.add(tf_name_deposit_ad);
-        Pd5_ad.add(l_account_no_deposit_ad);
-        Pd6_ad.add(tf_account_no_deposit_ad);
-        Pd7_ad.add(l_available_balance_deposit_ad);
-        Pd8_ad.add(tf_available_balance_deposit_ad);
+//        Pd5_ad.add(l_account_no_deposit_ad);
+//        Pd6_ad.add(tf_account_no_deposit_ad);
+//        Pd7_ad.add(l_available_balance_deposit_ad);
+//        Pd8_ad.add(tf_available_balance_deposit_ad);
         Pd9_ad.add(l_amount_deposit_ad);
         Pd10_ad.add(tf_amount_deposit_ad);
         //Pd11_ad.add(l_response_deposit_ad);
@@ -1038,8 +1045,8 @@ public class GUI implements ActionListener {
 
         //l_user_transfer_ad = new JLabel("User");
         l_name_transfer_ad = new JLabel("Username"); 
-        l_account_no_transfer_ad = new JLabel("Account No."); 
-        l_available_balance_transfer_ad = new JLabel("Available Balance");
+//        l_account_no_transfer_ad = new JLabel("Account No."); 
+//        l_available_balance_transfer_ad = new JLabel("Available Balance");
         l_amount_transfer_ad = new JLabel("Amount");
         l_target_acc_id_ad = new JLabel("Target Account ID"); 
         l_response_transfer_ad = new JLabel("");
@@ -1051,13 +1058,13 @@ public class GUI implements ActionListener {
         tf_name_transfer_ad.setText("");
        // tf_name_transfer_ad.setEditable(false);
         
-        tf_account_no_transfer_ad = new JTextField(20);
-        tf_account_no_transfer_ad.setText("");
-        tf_account_no_transfer_ad.setEditable(false);
-        
-        tf_available_balance_transfer_ad = new JTextField(20);
-        tf_available_balance_transfer_ad.setText("");
-        tf_available_balance_transfer_ad.setEditable(false);
+//        tf_account_no_transfer_ad = new JTextField(20);
+//        tf_account_no_transfer_ad.setText("");
+//        tf_account_no_transfer_ad.setEditable(false);
+//        
+//        tf_available_balance_transfer_ad = new JTextField(20);
+//        tf_available_balance_transfer_ad.setText("");
+//        tf_available_balance_transfer_ad.setEditable(false);
         
         tf_amount_transfer_ad = new JTextField(20);
         tf_amount_transfer_ad.setText("");
@@ -1072,10 +1079,10 @@ public class GUI implements ActionListener {
 //        Pt2_ad.add(tf_user_transfer_ad);
         Pt3_ad.add(l_name_transfer_ad);
         Pt4_ad.add(tf_name_transfer_ad);
-        Pt5_ad.add(l_account_no_transfer_ad);
-        Pt6_ad.add(tf_account_no_transfer_ad);
-        Pt7_ad.add(l_available_balance_transfer_ad);
-        Pt8_ad.add(tf_available_balance_transfer_ad);
+//        Pt5_ad.add(l_account_no_transfer_ad);
+//        Pt6_ad.add(tf_account_no_transfer_ad);
+//        Pt7_ad.add(l_available_balance_transfer_ad);
+//        Pt8_ad.add(tf_available_balance_transfer_ad);
         Pt9_ad.add(l_amount_transfer_ad);
         Pt10_ad.add(tf_amount_transfer_ad);
         Pt11_ad.add(l_target_acc_id_ad);
@@ -1088,8 +1095,8 @@ public class GUI implements ActionListener {
        
         //l_user_withdraw_ad = new JLabel("User");
         l_name_withdraw_ad = new JLabel("Username"); 
-        l_account_no_withdraw_ad = new JLabel("Account No."); 
-        l_available_balance_withdraw_ad = new JLabel("Available Balance");
+//        l_account_no_withdraw_ad = new JLabel("Account No."); 
+//        l_available_balance_withdraw_ad = new JLabel("Available Balance");
         l_amount_withdraw_ad = new JLabel("Amount");
         l_response_withdraw_ad = new JLabel("");
         
@@ -1100,13 +1107,13 @@ public class GUI implements ActionListener {
         tf_name_withdraw_ad.setText("");
         //tf_name_withdraw_ad.setEditable(false);
         
-        tf_account_no_withdraw_ad = new JTextField(20);
-        tf_account_no_withdraw_ad.setText("");
-        tf_account_no_withdraw_ad.setEditable(false);
-        
-        tf_available_balance_withdraw_ad = new JTextField(20);
-        tf_available_balance_withdraw_ad.setText("");
-        tf_available_balance_withdraw_ad.setEditable(false);
+//        tf_account_no_withdraw_ad = new JTextField(20);
+//        tf_account_no_withdraw_ad.setText("");
+//        tf_account_no_withdraw_ad.setEditable(false);
+//        
+//        tf_available_balance_withdraw_ad = new JTextField(20);
+//        tf_available_balance_withdraw_ad.setText("");
+//        tf_available_balance_withdraw_ad.setEditable(false);
          
         tf_amount_withdraw_ad = new JTextField(20);
         tf_amount_withdraw_ad.setText("");
@@ -1118,10 +1125,10 @@ public class GUI implements ActionListener {
         //Pw2_ad.add(tf_user_withdraw_ad);
         Pw3_ad.add(l_name_withdraw_ad);
         Pw4_ad.add(tf_name_withdraw_ad);
-        Pw5_ad.add(l_account_no_withdraw_ad);
-        Pw6_ad.add(tf_account_no_withdraw_ad);
-        Pw7_ad.add(l_available_balance_withdraw_ad);
-        Pw8_ad.add(tf_available_balance_withdraw_ad);
+//        Pw5_ad.add(l_account_no_withdraw_ad);
+//        Pw6_ad.add(tf_account_no_withdraw_ad);
+//        Pw7_ad.add(l_available_balance_withdraw_ad);
+//        Pw8_ad.add(tf_available_balance_withdraw_ad);
         Pw9_ad.add(l_amount_withdraw_ad);
         Pw10_ad.add(tf_amount_withdraw_ad);
         //Pw11_ad.add(l_response_withdraw_ad);
@@ -1153,20 +1160,20 @@ public class GUI implements ActionListener {
  
 //----------------------------------View Balance Tab--------------------------------//
 
-        l_user_view_ad = new JLabel("User");
-        l_name_view_ad = new JLabel("Name"); 
+        //l_user_view_ad = new JLabel("User");
+        l_name_view_ad = new JLabel("Username"); 
         l_account_no_view_ad = new JLabel("Account No."); 
         //l_micr_no_view_ad = new JLabel("MICR No."); 
-        l_roi_view_ad = new JLabel("Rate of Interest (%)");
+       // l_roi_view_ad = new JLabel("Rate of Interest (%)");
         l_available_balance_view_ad = new JLabel("Available Balance");
         //l_mod_balance_view_ad = new JLabel("MOD Balance");
         
-        tf_user_view_ad = new JTextField(20);
-        tf_user_view_ad.setText("");
+       // tf_user_view_ad = new JTextField(20);
+        //tf_user_view_ad.setText("");
         
         tf_name_view_ad = new JTextField(20);
         tf_name_view_ad.setText("");
-        tf_name_view_ad.setEditable(false);
+        //tf_name_view_ad.setEditable(false);
         
         tf_account_no_view_ad = new JTextField(20);
         tf_account_no_view_ad.setText("");
@@ -1176,9 +1183,9 @@ public class GUI implements ActionListener {
 //        tf_micr_no_view_ad.setText("");
 //        tf_micr_no_view_ad.setEditable(false);
         
-        tf_roi_view_ad = new JTextField(20);
-        tf_roi_view_ad.setText("");
-        tf_roi_view_ad.setEditable(false);
+//        tf_roi_view_ad = new JTextField(20);
+//        tf_roi_view_ad.setText("");
+//        tf_roi_view_ad.setEditable(false);
         
         tf_available_balance_view_ad = new JTextField(20);
         tf_available_balance_view_ad.setText("");
@@ -1194,18 +1201,18 @@ public class GUI implements ActionListener {
         refresh_ad = new JButton("Refresh");
         refresh_ad.addActionListener(this);
         
-        Pv1_ad.add(l_user_view_ad);
-        Pv2_ad.add(tf_user_view_ad);
+        //Pv1_ad.add(l_user_view_ad);
+       // Pv2_ad.add(tf_user_view_ad);
         Pv3_ad.add(l_name_view_ad);
         Pv4_ad.add(tf_name_view_ad);
         Pv5_ad.add(l_account_no_view_ad);
         Pv6_ad.add(tf_account_no_view_ad);
 //        Pv7_ad.add(l_micr_no_view_ad);
 //        Pv8_ad.add(tf_micr_no_view_ad);
-        Pv7_ad.add(l_roi_view_ad);
-        Pv8_ad.add(tf_roi_view_ad);
-        Pv9_ad.add(l_available_balance_view_ad);
-        Pv10_ad.add(tf_available_balance_view_ad);
+//        Pv7_ad.add(l_roi_view_ad);
+//        Pv8_ad.add(tf_roi_view_ad);
+        Pv7_ad.add(l_available_balance_view_ad);
+        Pv8_ad.add(tf_available_balance_view_ad);
         Pview_balance2_ad.add(search_view_ad);
         Pview_balance2_ad.add(refresh_ad);
         
@@ -1291,6 +1298,7 @@ public class GUI implements ActionListener {
         l_delete_username = new JLabel("Username");
         l_delete_password = new JLabel(" Password ");
         l_delete_Error = new JLabel("");
+        
         tf_delete_username = new JTextField(20);
         tf_delete_username.setText("");
         delete_password = new JPasswordField(20);
@@ -1373,26 +1381,39 @@ public class GUI implements ActionListener {
         }
         else if (e.getSource() == profile_edit_btn_ad)
         {
-            tf_name.setEditable(true);
-            tf_dob.setEditable(true); 
-            tf_nationality.setEditable(true);
-            tf_gender.setEditable(true);
-            tf_address.setEditable(true);
-            tf_account_no.setEditable(true);
-            tf_account_type.setEditable(true);
-            tf_mobile_no.setEditable(true);
+            tf_name_ad.setEditable(true);
+            tf_dob_ad.setEditable(true); 
+            tf_nationality_ad.setEditable(true);
+            tf_gender_ad.setEditable(true);
+            tf_address_ad.setEditable(true);
+            tf_account_no_ad.setEditable(true);
+            tf_account_type_ad.setEditable(true);
+            tf_mobile_no_ad.setEditable(true);
         }
         else if (e.getSource() == profile_save_btn_ad)
         {
             //................................
-            tf_name.setEditable(false);
-            tf_dob.setEditable(false); 
-            tf_nationality.setEditable(false);
-            tf_gender.setEditable(false);
-            tf_address.setEditable(false);
-            tf_account_no.setEditable(false);
-            tf_account_type.setEditable(false);
-            tf_mobile_no.setEditable(false);
+            tf_name_ad.setEditable(false);
+            tf_dob_ad.setEditable(false); 
+            tf_nationality_ad.setEditable(false);
+            tf_gender_ad.setEditable(false);
+            tf_address_ad.setEditable(false);
+            tf_account_no_ad.setEditable(false);
+            tf_account_type_ad.setEditable(false);
+            tf_mobile_no_ad.setEditable(false);
+            c = db.getClient(tf_name_ad.getText());
+            Account a = c.getClientAccount();
+            String pass = c.get_password();
+            c.setName(tf_name_ad.getText());
+            c.setDob(tf_dob_ad.getText());
+            c.setNationality(tf_nationality_ad.getText());
+            c.setGender(tf_gender_ad.getText());
+            c.setAddress(tf_address_ad.getText());
+            c.setAccNo(Integer.parseInt(tf_account_no_ad.getText()));
+            a.setType(tf_account_type_ad.getText());
+            c.setClientAccount(a);
+            c.setPhNo(Integer.parseInt(tf_mobile_no_ad.getText()));
+            db.updateClient(tf_name_ad.getText(), c);
         }
         
         else if (e.getSource() == deposit_btn)
@@ -1437,16 +1458,18 @@ public class GUI implements ActionListener {
                 db.recordTransaction(c.getId(), amount, "withdraw");
             } 
         }
-        /*
+        
         if (e.getSource() == register_done_btn)
         {  
-            Account a = new Account(Integer.parseInt(tf_reg_account_no.getText()), 0, tf_reg_account_type.getText());
-//            db.createClient(new Client(tf_reg_name.getText(), tf_reg_address.getText(), Integer.parseInt(tf_reg_mobile_no.getText()), Integer.parseInt(tf_reg_account_no.getText()), a, tf_reg_gender.getText(), tf_reg_nationality.getText(), tf_reg_dob.getText())); 
+            String type =tf_reg_account_type.getText();
+            
+            Account a = new Account(0,Integer.parseInt(tf_balance_register.getText()),type);
+    db.createClient(new Client(tf_reg_name.getText(),0, tf_reg_address.getText(), Integer.parseInt(tf_reg_mobile_no.getText()),0, a, tf_reg_gender.getText(), tf_reg_nationality.getText(), tf_reg_dob.getText(),tf_password_register.getText(),Integer.parseInt(tf_age_register.getText()))); 
         }
         if (e.getSource() == delete_btn)
         {
             String userName = tf_delete_username.getText();
-//             String response = db.deleteClient(userName);
+            String response = db.deleteClient(userName);
             if(response == "username not found"){
                 l_delete_Error.setText("User not found");
             }else if(response == "deleted successfully"){
@@ -1454,38 +1477,148 @@ public class GUI implements ActionListener {
             }
             
         }
-        */
-        else if (e.getSource() == deposit_btn_ad)
+        
+        else if (e.getSource() == update)
+        {
+            DefaultTableModel tableModel = (DefaultTableModel) transactions.getModel();
+                  Connection connection = null;
+             try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "Omar1801246");
+           
+            //System.out.println("Successully Connected");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         try {
+           
+            Statement st = connection.createStatement();
+            ResultSet rs=st.executeQuery("select * from transaction where clientID = "+c.getId());
+            while(rs.next()){
+                int id =rs.getInt("transID");
+                double amount = rs.getDouble("amount");
+                int clientID = rs.getInt("clientID");
+                 int targetID = rs.getInt("targetID");
+                String type = rs.getString("type");
+        
+               
+                tableModel.addRow(new Object[]{clientID,amount,type,id,targetID});
+            }
+            
+        st.close();
+        connection.close();
+         }catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+         else if (e.getSource() == update_ad)
+        {
+              DefaultTableModel tableModel = (DefaultTableModel) transactions_ad.getModel();
+                  Connection connection = null;
+             try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "Omar1801246");
+           
+            //System.out.println("Successully Connected");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         try {
+           
+            Statement st = connection.createStatement();
+            ResultSet rs=st.executeQuery("select * from transaction");
+            while(rs.next()){
+                int id =rs.getInt("transID");
+                double amount = rs.getDouble("amount");
+                int clientID = rs.getInt("clientID");
+                 int targetID = rs.getInt("targetID");
+                String type = rs.getString("type");
+        
+               
+                tableModel.addRow(new Object[]{clientID,amount,type,id,targetID});
+            }
+            
+        st.close();
+        connection.close();
+         }catch (SQLException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+          else if (e.getSource() == refresh)
+        {
+            Account acc=c.getClientAccount();
+           tf_available_balance_view.setText(Double.toString(acc.getBalance()));
+        }
+           else if (e.getSource() == refresh_ad)
         {
             
+          c =db.getClient(tf_name_view_ad.getText());
+          Account acc = c.getClientAccount();
+          tf_available_balance_view_ad.setText(Double.toString(acc.getBalance()));
+          
+        }
+        else if (e.getSource() == deposit_btn_ad)
+        {
+            c =db.getClient(tf_name_deposit_ad.getText());
+            Account a= c.getClientAccount();
+            Deposit d = new Deposit(a);
+            d.depositAmount(Double.parseDouble(tf_amount_deposit_ad.getText()));
+            db.updateClient(tf_name_deposit_ad.getText(), c);
         }
         else if (e.getSource() == transfer_btn_ad)
         {
-            
+            int targetID =Integer.parseInt(tf_target_acc_id_ad.getText());
+             c =db.getClient(tf_name_transfer_ad.getText());
+            Account a= c.getClientAccount();
+            Client TargetClient = db.getClient(targetID);
+            Account TargetAcc = TargetClient.getClientAccount();
+            Transfer t = new Transfer(a,TargetAcc);
+            t.transferAmount(Double.parseDouble(tf_amount_transfer_ad.getText()));
+            db.updateClient(tf_name_withdraw_ad.getText(), c);
+            db.updateClient(targetID, TargetClient);
         }
         else if (e.getSource() == withdraw_btn_ad)
         {
+            c =db.getClient(tf_name_withdraw_ad.getText());
+            Account a= c.getClientAccount();
+            Withdraw w = new Withdraw(a);
+            w.withdrawAmount(Double.parseDouble(tf_amount_withdraw_ad.getText()));
+            db.updateClient(tf_name_withdraw_ad.getText(), c);
             
         }
         
         else if (e.getSource() == search_view_ad)
         {
+            tf_name_view_ad.getText();
+            c = db.getClient(tf_name_view_ad.getText());
+            tf_account_no_view_ad.setText(Integer.toString(c.getAccNo()));
+            Account a = c.getClientAccount();
+            tf_available_balance_view_ad.setText(Double.toString(a.getBalance()));
+        }
+        else if (e.getSource() == search_profile)
+        {
+            
+            db =db.getInstance();
+            c=db.getClient(tf_name_ad.getText());
+             tf_dob_ad.setText(c.getDob());
+            tf_nationality_ad.setText(c.getNationality()); 
+            tf_gender_ad.setText(c.getGender());
+            tf_address_ad.setText(c.getAddress());
+            tf_account_no_ad.setText(Integer.toString(c.getAccNo()));
+            Account a = c.getClientAccount();
+            tf_account_type_ad.setText(a.getType());
+            tf_mobile_no_ad.setText(Integer.toString(c.getPhNo()));
             
         }
    
         
     }
-   /* private void deposit_btnActionPerformed(ActionEvent evt){
-        Client c = null;
-        DbManager db = null;
-        
-        db = DbManager.getInstance();
-        int amount = Integer.parseInt(tf_amount_deposit.getText());
-            l_response_deposit.setText("Transaction Done Successfully");
-            Deposit d = new Deposit(c.getClientAccount());
-            d.depositAmount(amount);
-            db.updateClient(tf_username.getText(), c);
-    
-    }*/
+  
 
 }

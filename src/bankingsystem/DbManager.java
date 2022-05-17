@@ -37,6 +37,7 @@ public class DbManager {
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
     public String validateUser(String username, String password){
         createConnection();
          try {
