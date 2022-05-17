@@ -54,12 +54,15 @@ public class GUI implements ActionListener {
     
     //Transactions tab
     JTable transactions;
+    JButton update;
+    DefaultTableModel model;
     
     //view balance tab
     JLabel l_user_view, l_name_view, l_account_no_view, l_micr_no_view, l_roi_view, l_available_balance_view, l_mod_balance_view;
     JTextField tf_user_view, tf_name_view, tf_account_no_view, tf_micr_no_view, tf_roi_view, tf_available_balance_view,
             tf_mod_balance_view;
     JLabel try_available_balance;
+    JButton refresh;
     
  //-----------------------------------admin frame-------------------------------------------   
     JFrame admin_account;
@@ -69,42 +72,44 @@ public class GUI implements ActionListener {
             l_account_type_ad, l_mobile_no_ad;
     JTextField tf_name_ad, tf_dob_ad, tf_nationality_ad, tf_gender_ad, tf_address_ad, tf_account_no_ad, 
             tf_account_type_ad, tf_mobile_no_ad;
-    JButton profile_edit_btn_ad, profile_save_btn_ad ;
+    JButton profile_edit_btn_ad, profile_save_btn_ad ,search_profile;
     
     //Deposit tab
     JLabel l_response_deposit_ad, l_user_deposit_ad, l_name_deposit_ad, l_account_no_deposit_ad, l_available_balance_deposit_ad, l_amount_deposit_ad;
     JTextField tf_user_deposit_ad, tf_name_deposit_ad, tf_account_no_deposit_ad, tf_available_balance_deposit_ad,
             tf_amount_deposit_ad;
-    JButton deposit_btn_ad, search_deposit_ad;
+    JButton deposit_btn_ad;
     
     //Transfer tab
     JLabel l_response_transfer_ad, l_user_transfer_ad, l_name_transfer_ad, l_account_no_transfer_ad, l_available_balance_transfer_ad, l_amount_transfer_ad,
             l_target_acc_id_ad;
     JTextField tf_user_transfer_ad, tf_name_transfer_ad, tf_account_no_transfer_ad, tf_available_balance_transfer_ad, 
             tf_amount_transfer_ad, tf_target_acc_id_ad;
-    JButton transfer_btn_ad, search_transfer_ad;
+    JButton transfer_btn_ad;
     
     //Withdraw tab
     JLabel l_response_withdraw_ad, l_user_withdraw_ad, l_name_withdraw_ad, l_account_no_withdraw_ad, l_available_balance_withdraw_ad, l_amount_withdraw_ad;
     JTextField tf_user_withdraw_ad, tf_name_withdraw_ad, tf_account_no_withdraw_ad, tf_available_balance_withdraw_ad,
             tf_amount_withdraw_ad;
-    JButton withdraw_btn_ad, search_withdraw_ad;
+    JButton withdraw_btn_ad;
     
     //Transactions tab
     JTable transactions_ad;
+    JButton update_ad;
+    DefaultTableModel model_ad;
     
     //view balance tab
     JLabel l_user_view_ad, l_name_view_ad, l_account_no_view_ad, l_micr_no_view_ad, l_roi_view_ad, l_available_balance_view_ad,
             l_mod_balance_view_ad;
     JTextField tf_user_view_ad, tf_name_view_ad, tf_account_no_view_ad, tf_micr_no_view_ad, tf_roi_view_ad, 
             tf_available_balance_view_ad, tf_mod_balance_view_ad;
-    JButton search_view_ad;
+    JButton search_view_ad, refresh_ad;
     
     //register new client tab
-    JLabel l_response_register, l_reg_name, l_reg_dob, l_reg_nationality, l_reg_gender, l_reg_address, l_reg_account_no, l_reg_account_type,
-            l_reg_mobile_no;
-    JTextField tf_reg_name, tf_reg_dob, tf_reg_nationality, tf_reg_gender, tf_reg_address, tf_reg_account_no, tf_reg_account_type,
-            tf_reg_mobile_no;
+    JLabel l_response_register, l_reg_name, l_reg_dob, l_reg_nationality, l_reg_gender, l_reg_address, l_age_register, l_reg_account_type,
+            l_reg_mobile_no, l_balance_register, l_password_register;
+    JTextField tf_reg_name, tf_reg_dob, tf_reg_nationality, tf_reg_gender, tf_reg_address, tf_age_register, tf_reg_account_type,
+            tf_reg_mobile_no, tf_balance_register, tf_password_register;
     JButton  register_done_btn ;
     
 //    JLabel l_password_register;
@@ -214,8 +219,8 @@ public class GUI implements ActionListener {
  
 //----------------------------------Deposit panels----------------------------------//    
 
-        JPanel Pdeposit = new JPanel(new GridLayout(2,1));
-        JPanel Pdeposit1 = new JPanel(new GridLayout(6,2));
+        JPanel Pdeposit = new JPanel(new GridLayout(3,1));
+        JPanel Pdeposit1 = new JPanel(new GridLayout(1,2));
         JPanel Pdeposit2 = new JPanel();
         JPanel Pdeposit3 = new JPanel();
         JPanel Pd1 = new JPanel();
@@ -248,8 +253,8 @@ public class GUI implements ActionListener {
 
 //----------------------------------Transfer panels----------------------------------//
 
-        JPanel Ptransfer = new JPanel(new GridLayout(2,1));
-        JPanel Ptransfer1 = new JPanel(new GridLayout(7,2));
+        JPanel Ptransfer = new JPanel(new GridLayout(3,1));
+        JPanel Ptransfer1 = new JPanel(new GridLayout(2,2));
         JPanel Ptransfer2 = new JPanel();
         JPanel Ptransfer3 = new JPanel();
         JPanel Pt1 = new JPanel();
@@ -285,8 +290,8 @@ public class GUI implements ActionListener {
              
 //----------------------------------Withdraw panels----------------------------------//    
 
-        JPanel Pwithdraw = new JPanel(new GridLayout(2,1));
-        JPanel Pwithdraw1 = new JPanel(new GridLayout(6,2));
+        JPanel Pwithdraw = new JPanel(new GridLayout(3,1));
+        JPanel Pwithdraw1 = new JPanel(new GridLayout(1,2));
         JPanel Pwithdraw2 = new JPanel();
         JPanel Pwithdraw3 = new JPanel();
         JPanel Pw1 = new JPanel();
@@ -318,14 +323,17 @@ public class GUI implements ActionListener {
         
 //----------------------------------Transactions panels----------------------------------// 
 
-        JPanel Ptransactions = new JPanel(new GridLayout(1,1));
+        JPanel Ptransactions = new JPanel(new GridLayout(2,1));
+        JPanel Ptransactions1 = new JPanel(new GridLayout(1,1));
+        JPanel Ptransactions2 = new JPanel();
         
-        
+        Ptransactions.add(Ptransactions1);
+        Ptransactions.add(Ptransactions2);
 //----------------------------------view balance panels----------------------------------//
 
         JPanel Pview_balance = new JPanel(new GridLayout(2,1));
         JPanel Pview_balance1 = new JPanel(new GridLayout(7,2));
-       // JPanel Pview_balance2 = new JPanel();
+        JPanel Pview_balance2 = new JPanel();
         JPanel Pv1 = new JPanel();
         JPanel Pv2 = new JPanel();
         JPanel Pv3 = new JPanel();
@@ -342,7 +350,7 @@ public class GUI implements ActionListener {
         JPanel Pv14 = new JPanel();
         
         Pview_balance.add(Pview_balance1);
-        //Pview_balance.add(Pview_balance2);
+        Pview_balance.add(Pview_balance2);
         Pview_balance1.add(Pv1);
         Pview_balance1.add(Pv2);
         Pview_balance1.add(Pv3);
@@ -396,7 +404,7 @@ public class GUI implements ActionListener {
         tf_mobile_no = new JTextField(20);
         tf_mobile_no.setText("");
         
-        tf_name.setEditable(false);
+        //tf_name.setEditable(false);
         tf_dob.setEditable(false); 
         tf_nationality.setEditable(false);
         tf_gender.setEditable(false);
@@ -564,14 +572,19 @@ public class GUI implements ActionListener {
 //        };
         // Column Names
         String[] columnNames = { "Account No.", "Amount", "Type", "Transaction ID", "Target Account ID" };
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        model = new DefaultTableModel(columnNames, 0);
         // Initializing the JTable
         transactions = new JTable(model);
         transactions.setBounds(30, 40, 200, 300);
         
+        update = new JButton("Update");
+        update.addActionListener(this);
+        
         // adding it to JScrollPane
         JScrollPane sp = new JScrollPane(transactions);
-        Ptransactions.add(sp);
+        Ptransactions1.add(sp);
+        Ptransactions2.add(update);
+        
  
 //----------------------------------View Balance Tab--------------------------------//
 
@@ -613,6 +626,9 @@ public class GUI implements ActionListener {
 //        tf_mod_balance_view.setText("");
 //        tf_mod_balance_view.setEditable(false);
         
+
+        refresh = new JButton("Refresh");
+        refresh.addActionListener(this);
         
         //Pv1.add(l_user_view);
         //Pv2.add(tf_user_view);
@@ -627,6 +643,7 @@ public class GUI implements ActionListener {
         Pv9.add(l_available_balance_view);
         //Pv12.add(try_available_balance);
         Pv10.add(tf_available_balance_view);
+        Pview_balance2.add(refresh);
 //        Pv13.add(l_mod_balance_view);
 //        Pv14.add(tf_mod_balance_view);
         
@@ -788,9 +805,12 @@ public class GUI implements ActionListener {
         
 //----------------------------------Transactions panels----------------------------------// 
 
-        JPanel Ptransactions_ad = new JPanel(new GridLayout(1,1));
+        JPanel Ptransactions_ad = new JPanel(new GridLayout(2,1));
+        JPanel Ptransactions1_ad = new JPanel(new GridLayout(1,1));
+        JPanel Ptransactions2_ad = new JPanel();
         
-        
+        Ptransactions_ad.add(Ptransactions1_ad);
+        Ptransactions_ad.add(Ptransactions2_ad);
 //----------------------------------view balance panels----------------------------------//
 
         JPanel Pview_balance_ad = new JPanel(new GridLayout(2,1));
@@ -831,7 +851,7 @@ public class GUI implements ActionListener {
 //----------------------------------Register new client panels----------------------------------//
 
         JPanel Pregister_ad = new JPanel(new GridLayout(3,1));
-        JPanel Pregister1_ad = new JPanel(new GridLayout(4,4));
+        JPanel Pregister1_ad = new JPanel(new GridLayout(5,4));
         JPanel Pregister2_ad = new JPanel();
         JPanel Pregister3_ad = new JPanel();
         JPanel Pr1_ad = new JPanel();
@@ -850,7 +870,10 @@ public class GUI implements ActionListener {
         JPanel Pr14_ad = new JPanel();
         JPanel Pr15_ad = new JPanel();
         JPanel Pr16_ad = new JPanel();
-        //JPanel Pr17_ad = new JPanel();
+        JPanel Pr17_ad = new JPanel();
+        JPanel Pr18_ad = new JPanel();
+        JPanel Pr19_ad = new JPanel();
+        JPanel Pr20_ad = new JPanel();
         
         
         Pregister_ad.add(Pregister1_ad);
@@ -872,7 +895,10 @@ public class GUI implements ActionListener {
         Pregister1_ad.add(Pr14_ad);
         Pregister1_ad.add(Pr15_ad);
         Pregister1_ad.add(Pr16_ad);
-        //Pregister1_ad.add(Pr17_ad);
+        Pregister1_ad.add(Pr17_ad);
+        Pregister1_ad.add(Pr18_ad);
+        Pregister1_ad.add(Pr19_ad);
+        Pregister1_ad.add(Pr20_ad);
 //----------------------------------Delete clients panels----------------------------------//
 
         JPanel Pdelete_ad = new JPanel(new GridLayout(4,1)) ;
@@ -888,7 +914,7 @@ public class GUI implements ActionListener {
 
 
 
-        admin_tabs.add("Profile", Pprofile_ad);
+        admin_tabs.add("Edit Client Info", Pprofile_ad);
         admin_tabs.add("Deposit", Pdeposit_ad);
         admin_tabs.add("Transfer", Ptransfer_ad);
         admin_tabs.add("Withdraw", Pwithdraw_ad);
@@ -901,7 +927,7 @@ public class GUI implements ActionListener {
         
 //-------------------------------------Profile tab----------------------------------//        
 
-        l_name_ad = new JLabel("Name");
+        l_name_ad = new JLabel("Username");
         l_dob_ad = new JLabel("Date Of Birth");
         l_nationality_ad = new JLabel("Nationality");
         l_gender_ad = new JLabel("Gender");
@@ -927,7 +953,7 @@ public class GUI implements ActionListener {
         tf_mobile_no_ad = new JTextField(20);
         tf_mobile_no_ad.setText("");
         
-        tf_name_ad.setEditable(false);
+        //tf_name_ad.setEditable(false);
         tf_dob_ad.setEditable(false); 
         tf_nationality_ad.setEditable(false);
         tf_gender_ad.setEditable(false);
@@ -940,6 +966,9 @@ public class GUI implements ActionListener {
         profile_edit_btn_ad.addActionListener(this);
         profile_save_btn_ad = new JButton("Save");
         profile_save_btn_ad.addActionListener(this);
+        
+        search_profile = new JButton("Search");
+        search_profile.addActionListener(this);
 
         Pp1_ad.add(l_name_ad);
         Pp2_ad.add(tf_name_ad);
@@ -959,21 +988,22 @@ public class GUI implements ActionListener {
         Pp16_ad.add(tf_mobile_no_ad);
         Pprofile2_ad.add(profile_edit_btn_ad);
         Pprofile2_ad.add(profile_save_btn_ad);
+        Pprofile2_ad.add(search_profile);
 
 //----------------------------------Deposit tap------------------------------------//
-        l_user_deposit_ad = new JLabel("User");
-        l_name_deposit_ad = new JLabel("Name"); 
+        //l_user_deposit_ad = new JLabel("User");
+        l_name_deposit_ad = new JLabel("Username"); 
         l_account_no_deposit_ad = new JLabel("Account No."); 
         l_available_balance_deposit_ad = new JLabel("Available Balance");
         l_amount_deposit_ad = new JLabel("Amount");
         l_response_deposit_ad = new JLabel("");
         
-        tf_user_deposit_ad = new JTextField(20);
-        tf_user_deposit_ad.setText("");
+//        tf_user_deposit_ad = new JTextField(20);
+//        tf_user_deposit_ad.setText("");
         
         tf_name_deposit_ad = new JTextField(20);
         tf_name_deposit_ad.setText("");
-        tf_name_deposit_ad.setEditable(false);
+        //tf_name_deposit_ad.setEditable(false);
         
         tf_account_no_deposit_ad = new JTextField(20);
         tf_account_no_deposit_ad.setText("");
@@ -988,13 +1018,10 @@ public class GUI implements ActionListener {
 
         deposit_btn_ad = new JButton("Deposit");
         deposit_btn_ad.addActionListener(this);
+  
         
-        search_deposit_ad = new JButton("Search");
-        search_deposit_ad.addActionListener(this);
-        
-        
-        Pd1_ad.add(l_user_deposit_ad);
-        Pd2_ad.add(tf_user_deposit_ad);
+//        Pd1_ad.add(l_user_deposit_ad);
+//        Pd2_ad.add(tf_user_deposit_ad);
         Pd3_ad.add(l_name_deposit_ad);
         Pd4_ad.add(tf_name_deposit_ad);
         Pd5_ad.add(l_account_no_deposit_ad);
@@ -1005,25 +1032,24 @@ public class GUI implements ActionListener {
         Pd10_ad.add(tf_amount_deposit_ad);
         //Pd11_ad.add(l_response_deposit_ad);
         Pdeposit2_ad.add(deposit_btn_ad);
-        Pdeposit2_ad.add(search_deposit_ad);
         Pdeposit3_ad.add(l_response_deposit_ad);
  
 //------------------------------Transfer Tab------------------------------------//
 
-        l_user_transfer_ad = new JLabel("User");
-        l_name_transfer_ad = new JLabel("Name"); 
+        //l_user_transfer_ad = new JLabel("User");
+        l_name_transfer_ad = new JLabel("Username"); 
         l_account_no_transfer_ad = new JLabel("Account No."); 
         l_available_balance_transfer_ad = new JLabel("Available Balance");
         l_amount_transfer_ad = new JLabel("Amount");
         l_target_acc_id_ad = new JLabel("Target Account ID"); 
         l_response_transfer_ad = new JLabel("");
         
-        tf_user_transfer_ad = new JTextField(20);
-        tf_user_transfer_ad.setText("");
-        
+//        tf_user_transfer_ad = new JTextField(20);
+//        tf_user_transfer_ad.setText("");
+//        
         tf_name_transfer_ad = new JTextField(20);
         tf_name_transfer_ad.setText("");
-        tf_name_transfer_ad.setEditable(false);
+       // tf_name_transfer_ad.setEditable(false);
         
         tf_account_no_transfer_ad = new JTextField(20);
         tf_account_no_transfer_ad.setText("");
@@ -1042,11 +1068,8 @@ public class GUI implements ActionListener {
         transfer_btn_ad = new JButton("Transfer");
         transfer_btn_ad.addActionListener(this);
         
-        search_transfer_ad = new JButton("Search");
-        search_transfer_ad.addActionListener(this);
-        
-        Pt1_ad.add(l_user_transfer_ad);
-        Pt2_ad.add(tf_user_transfer_ad);
+//        Pt1_ad.add(l_user_transfer_ad);
+//        Pt2_ad.add(tf_user_transfer_ad);
         Pt3_ad.add(l_name_transfer_ad);
         Pt4_ad.add(tf_name_transfer_ad);
         Pt5_ad.add(l_account_no_transfer_ad);
@@ -1059,24 +1082,23 @@ public class GUI implements ActionListener {
         Pt12_ad.add(tf_target_acc_id_ad);
         //Pt13_ad.add(l_response_transfer_ad);
         Ptransfer2_ad.add(transfer_btn_ad);
-        Ptransfer2_ad.add(search_transfer_ad);
         Ptransfer3_ad.add(l_response_transfer_ad);
         
  //---------------------------------------Withdraw Tap-------------------------------------//
        
-        l_user_withdraw_ad = new JLabel("User");
-        l_name_withdraw_ad = new JLabel("Name"); 
+        //l_user_withdraw_ad = new JLabel("User");
+        l_name_withdraw_ad = new JLabel("Username"); 
         l_account_no_withdraw_ad = new JLabel("Account No."); 
         l_available_balance_withdraw_ad = new JLabel("Available Balance");
         l_amount_withdraw_ad = new JLabel("Amount");
         l_response_withdraw_ad = new JLabel("");
         
-        tf_user_withdraw_ad = new JTextField(20);
-        tf_user_withdraw_ad.setText("");
+//        tf_user_withdraw_ad = new JTextField(20);
+//        tf_user_withdraw_ad.setText("");
         
         tf_name_withdraw_ad = new JTextField(20);
         tf_name_withdraw_ad.setText("");
-        tf_name_withdraw_ad.setEditable(false);
+        //tf_name_withdraw_ad.setEditable(false);
         
         tf_account_no_withdraw_ad = new JTextField(20);
         tf_account_no_withdraw_ad.setText("");
@@ -1092,11 +1114,8 @@ public class GUI implements ActionListener {
         withdraw_btn_ad = new JButton("Withdraw");
         withdraw_btn_ad.addActionListener(this);
         
-        search_withdraw_ad = new JButton("Search");
-        search_withdraw_ad.addActionListener(this);
-        
-        Pw1_ad.add(l_user_withdraw_ad);
-        Pw2_ad.add(tf_user_withdraw_ad);
+        //Pw1_ad.add(l_user_withdraw_ad);
+        //Pw2_ad.add(tf_user_withdraw_ad);
         Pw3_ad.add(l_name_withdraw_ad);
         Pw4_ad.add(tf_name_withdraw_ad);
         Pw5_ad.add(l_account_no_withdraw_ad);
@@ -1107,7 +1126,6 @@ public class GUI implements ActionListener {
         Pw10_ad.add(tf_amount_withdraw_ad);
         //Pw11_ad.add(l_response_withdraw_ad);
         Pwithdraw2_ad.add(withdraw_btn_ad);
-        Pwithdraw2_ad.add(search_withdraw_ad);
         Pwithdraw3_ad.add(l_response_withdraw_ad);
         
 //--------------------------------------Transactions Tab---------------------------------//
@@ -1119,15 +1137,19 @@ public class GUI implements ActionListener {
 //        };
         // Column Names
         String[] columnNames_ad = { "Account No.", "Amount", "Type", "Transaction ID", "Target Account ID" };
-        DefaultTableModel model_ad = new DefaultTableModel(columnNames, 0);
+        model_ad = new DefaultTableModel(columnNames, 0);
         
         // Initializing the JTable
         transactions_ad = new JTable(model_ad);
         transactions_ad.setBounds(30, 40, 200, 300);
         
+        update_ad = new JButton("Update");
+        update_ad.addActionListener(this);
+        
         // adding it to JScrollPane
         JScrollPane sp_ad = new JScrollPane(transactions_ad);
-        Ptransactions_ad.add(sp_ad);
+        Ptransactions1_ad.add(sp_ad);
+        Ptransactions2_ad.add(update_ad);
  
 //----------------------------------View Balance Tab--------------------------------//
 
@@ -1169,6 +1191,8 @@ public class GUI implements ActionListener {
         search_view_ad = new JButton("Search");
         search_view_ad.addActionListener(this);
         
+        refresh_ad = new JButton("Refresh");
+        refresh_ad.addActionListener(this);
         
         Pv1_ad.add(l_user_view_ad);
         Pv2_ad.add(tf_user_view_ad);
@@ -1183,6 +1207,8 @@ public class GUI implements ActionListener {
         Pv9_ad.add(l_available_balance_view_ad);
         Pv10_ad.add(tf_available_balance_view_ad);
         Pview_balance2_ad.add(search_view_ad);
+        Pview_balance2_ad.add(refresh_ad);
+        
 //        Pv13_ad.add(l_mod_balance_view_ad);
 //        Pv14_ad.add(tf_mod_balance_view_ad);
         
@@ -1194,10 +1220,12 @@ public class GUI implements ActionListener {
         l_reg_nationality = new JLabel("Nationality");
         l_reg_gender = new JLabel("Gender");
         l_reg_address = new JLabel("Address");
-        l_reg_account_no = new JLabel("Account No.");
+        l_age_register = new JLabel("Age");
         l_reg_account_type = new JLabel("Account Type");
         l_reg_mobile_no = new JLabel("Mobile No.");
         l_response_register = new JLabel("");
+        l_balance_register = new JLabel("Balance");
+        l_password_register = new JLabel("Password");
         
         tf_reg_name = new JTextField(20);
         tf_reg_name.setText("");
@@ -1209,23 +1237,26 @@ public class GUI implements ActionListener {
         tf_reg_gender.setText("");
         tf_reg_address = new JTextField(20);
         tf_reg_address.setText("");
-        tf_reg_account_no = new JTextField(20);
-        tf_reg_account_no.setText("");
+        tf_age_register = new JTextField(20);
+        tf_age_register.setText("");
         tf_reg_account_type = new JTextField(20);
         tf_reg_account_type.setText("");
         tf_reg_mobile_no = new JTextField(20);
         tf_reg_mobile_no.setText("");
-        
+        tf_balance_register = new JTextField(20);
+        tf_balance_register.setText("");
+        tf_password_register = new JTextField(20);
+        tf_password_register.setText("");
         
         tf_reg_name.setEditable(true);
         tf_reg_dob.setEditable(true); 
         tf_reg_nationality.setEditable(true);
         tf_reg_gender.setEditable(true);
         tf_reg_address.setEditable(true);
-        tf_reg_account_no.setEditable(true);
+        tf_age_register.setEditable(true);
         tf_reg_account_type.setEditable(true);
         tf_reg_mobile_no.setEditable(true);
-        
+        tf_balance_register.setEditable(true);
         
         register_done_btn = new JButton("Done");
         register_done_btn.addActionListener(this);
@@ -1241,13 +1272,16 @@ public class GUI implements ActionListener {
         Pr8_ad.add(tf_reg_gender);
         Pr9_ad.add(l_reg_address);
         Pr10_ad.add(tf_reg_address);
-        Pr11_ad.add(l_reg_account_no);
-        Pr12_ad.add(tf_reg_account_no);
+        Pr11_ad.add(l_age_register);
+        Pr12_ad.add(tf_age_register);
         Pr13_ad.add(l_reg_account_type);
         Pr14_ad.add(tf_reg_account_type);
         Pr15_ad.add(l_reg_mobile_no);
         Pr16_ad.add(tf_reg_mobile_no);
-        //Pr17_ad.add(l_response_register);
+        Pr17_ad.add(l_balance_register);
+        Pr18_ad.add(tf_balance_register);
+        Pr19_ad.add(l_password_register);
+        Pr20_ad.add(tf_password_register);
         Pregister2_ad.add(register_done_btn);
         Pregister3_ad.add(l_response_register);        
         
