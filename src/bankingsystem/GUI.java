@@ -1393,6 +1393,7 @@ public class GUI implements ActionListener {
         else if (e.getSource() == profile_save_btn_ad)
         {
             //................................
+            db = db.getInstance();
             tf_name_ad.setEditable(false);
             tf_dob_ad.setEditable(false); 
             tf_nationality_ad.setEditable(false);
@@ -1461,6 +1462,7 @@ public class GUI implements ActionListener {
         
         if (e.getSource() == register_done_btn)
         {  
+            db = db.getInstance();
             String type =tf_reg_account_type.getText();
             
             Account a = new Account(0,Integer.parseInt(tf_balance_register.getText()),type);
@@ -1468,6 +1470,7 @@ public class GUI implements ActionListener {
         }
         if (e.getSource() == delete_btn)
         {
+            db = db.getInstance();
             String userName = tf_delete_username.getText();
             String response = db.deleteClient(userName);
             if(response == "username not found"){
@@ -1516,6 +1519,7 @@ public class GUI implements ActionListener {
         }
          else if (e.getSource() == update_ad)
         {
+           
               DefaultTableModel tableModel = (DefaultTableModel) transactions_ad.getModel();
                   Connection connection = null;
              try {
@@ -1557,7 +1561,7 @@ public class GUI implements ActionListener {
         }
            else if (e.getSource() == refresh_ad)
         {
-            
+          db = db.getInstance();  
           c =db.getClient(tf_name_view_ad.getText());
           Account acc = c.getClientAccount();
           tf_available_balance_view_ad.setText(Double.toString(acc.getBalance()));
@@ -1565,6 +1569,7 @@ public class GUI implements ActionListener {
         }
         else if (e.getSource() == deposit_btn_ad)
         {
+            db = db.getInstance();
             c =db.getClient(tf_name_deposit_ad.getText());
             Account a= c.getClientAccount();
             Deposit d = new Deposit(a);
@@ -1573,6 +1578,7 @@ public class GUI implements ActionListener {
         }
         else if (e.getSource() == transfer_btn_ad)
         {
+            db = db.getInstance();
             int targetID =Integer.parseInt(tf_target_acc_id_ad.getText());
              c =db.getClient(tf_name_transfer_ad.getText());
             Account a= c.getClientAccount();
@@ -1585,6 +1591,7 @@ public class GUI implements ActionListener {
         }
         else if (e.getSource() == withdraw_btn_ad)
         {
+            db = db.getInstance();
             c =db.getClient(tf_name_withdraw_ad.getText());
             Account a= c.getClientAccount();
             Withdraw w = new Withdraw(a);
@@ -1595,6 +1602,7 @@ public class GUI implements ActionListener {
         
         else if (e.getSource() == search_view_ad)
         {
+            db = db.getInstance();
             tf_name_view_ad.getText();
             c = db.getClient(tf_name_view_ad.getText());
             tf_account_no_view_ad.setText(Integer.toString(c.getAccNo()));
